@@ -11,7 +11,7 @@
     }
 
     .add-book-btn {
-        background: linear-gradient(135deg, #0b4f74 0%, #156d97 100%);
+        background: linear-gradient(135deg, #048444 0%, #156d97 100%);
         border: 0;
         color: #fff !important;
         border-radius: 12px;

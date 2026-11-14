@@ -1,1185 +1,687 @@
-﻿@include('header')
-	<style>
-		.hero-slider.hero-style {
-			height: 100vh !important;
-		}
-		
-		.swiper-container {
-			height: 100vh !important;
-		}
-		
-		.swiper-slide {
-			height: 100vh !important;
-		}
-		
-		.slide-bg-image {
-						position: relative;
-						background-size: cover;
-						background-position: center;
-						height: 100vh !important;
-						min-height: 100vh !important;
-						/* Adjust height as needed */
-					}
+@include('header')
 
-					.gradient-overlay {
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						background: none;
-						/* Dark gradient overlay */
-						z-index: 1;
-						/* Make sure the gradient is on top of the background image */
-					}
+<style>
+/* Hero Slider Styles */
+.hero-slider-section {
+    position: relative;
+    overflow: hidden;
+}
 
-					.slide-inner .container {
-						position: relative;
-						z-index: 2;
-						/* Ensure content is on top of the gradient */
-					}
+.hero-slider-section .swiper-container {
+    height: 75vh;
+    min-height: 520px;
+    max-height: 660px;
+}
 
-					.text-white {
-						color: #ffffff;
-					}
+.hero-slide-item {
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
 
-					.slide-title h3,
-					.slide-text p {
-						color: white;
-						z-index: 2;
-					}
-                    /* Ensure arrows are visible */
-.swiper-button-next,
-.swiper-button-prev {
-    color: #fff !important;
-    background: rgba(0, 0, 0, 0.5);
-    width: 45px;
-    height: 45px;
+.hero-gradient-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, rgba(2, 43, 22, 0.92) 0%, rgba(4, 132, 68, 0.78) 55%, rgba(0, 187, 215, 0.45) 100%);
+    z-index: 1;
+}
+
+.hero-slide-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+}
+
+.hero-title {
+    color: #ffffff !important;
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    line-height: 1.18;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(15px, 1.8vw, 18px);
+    line-height: 1.65;
+    margin-bottom: 28px;
+    font-weight: 400;
+}
+
+/* Swiper navigation buttons */
+.swiper-button-next, .swiper-button-prev {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 9999 !important;
+    transition: all 0.25s ease;
 }
 
-/* Position properly */
-.swiper-button-prev {
-    left: 20px !important;
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    background: var(--ah-primary);
+    transform: scale(1.08);
 }
 
-.swiper-button-next {
-    right: 20px !important;
-}
-
-/* Arrow icon size */
-.swiper-button-next::after,
-.swiper-button-prev::after {
-    font-size: 18px;
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 18px !important;
     font-weight: bold;
 }
 
-/* Hover effect */
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background: #4a90d9;
-}
-/* Remove duplicate arrow (default Swiper icon) */
-.swiper-button-next::after,
-.swiper-button-prev::after {
-    display: none !important;
-}
-	</style>
-<section class="hero-slider hero-style">
-		<div class="swiper-container">
-
-			<div class="swiper-wrapper">
-
-				<div class="swiper-slide">
-					<!-- <img src="" alt=""> -->
-					<div class="slide-inner slide-bg-image background-img" data-background="img/back-1.jpeg">
-						<div class="gradient-overlay"></div> <!-- Gradient overlay -->
-						<div class="container">
-							<div class="row">
-								<div class="col-md-6">
-									<div data-swiper-parallax="300" class="slide-title">
-										<h3 class="text-white">Master Medical Coding Excellence</h3>
-									</div>
-									<div data-swiper-parallax="400" class="slide-text">
-										<p>Premier medical coding training academy offering comprehensive courses in ICD-10, CPT, and medical terminology to shape the future of healthcare coding professionals.</p>
-									</div>
-
-									<div class="clearfix"></div>
-									<div data-swiper-parallax="500" class="slide-btns">
-										<a href="{{route('contact')}}" class="btn-main bg-btn lnk">Enquiry Now <i
-												class="fas fa-chevron-right fa-icon"></i><span
-												class="circle"></span></a>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<!-- <img src="images/hero/mobile-app.png"> -->
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-
-				<div class="swiper-slide">
-					<div class="slide-inner slide-bg-image background-image" data-background="img/back-2.jpeg">
-						<div class="gradient-overlay"></div> <!-- Gradient overlay -->
-						<div class="container">
-							<div class="row">
-								<div class="col-md-6">
-									<div data-swiper-parallax="300" class="slide-title">
-										<h3 class="text-white">Professional Healthcare Coding Training</h3>
-									</div>
-									<div data-swiper-parallax="400" class="slide-text">
-										
-										<p>Industry-focused medical coding certification programs with hands-on training in EHR systems, billing processes, and compliance standards for healthcare professionals.</p>
-									</div>
-
-									<div class="clearfix"></div>
-									<div data-swiper-parallax="500" class="slide-btns">
-										<a href="{{route('contact')}}" class="btn-main bg-btn lnk">Enquiry Now <i
-												class="fas fa-chevron-right fa-icon"></i><span
-												class="circle"></span></a>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<!-- <img src="images/hero/web-development.png"> -->
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="swiper-slide">
-					<div class="slide-inner slide-bg-image background-img" data-background="img/back-3.jpeg">
-						<div class="gradient-overlay"></div> <!-- Gradient overlay -->
-						<div class="container">
-							<div class="row">
-								<div class="col-md-6">
-									<div data-swiper-parallax="300" class="slide-title">
-										<h3 class="text-white">Advanced Medical Coding Certification</h3>
-									</div>
-									<div data-swiper-parallax="400" class="slide-text">
-										<p>Comprehensive training in medical terminology, anatomy, and coding guidelines with practical experience using the latest healthcare information systems.</p>
-									</div>
-
-									<div class="clearfix"></div>
-									<div data-swiper-parallax="500" class="slide-btns">
-										<a href="{{route('contact')}}" class="btn-main bg-btn lnk">Enquiry Now <i
-												class="fas fa-chevron-right fa-icon"></i><span
-												class="circle"></span></a>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<!-- <img src="images/hero/digital-marketing.png"> -->
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="swiper-slide">
-					<div class="slide-inner slide-bg-image background-img" data-background="img/back-4.jpeg">
-						<div class="gradient-overlay"></div> <!-- Gradient overlay -->
-						<div class="container">
-							<div class="row">
-								<div class="col-md-6">
-									<div data-swiper-parallax="300" class="slide-title">
-										<h3 class="text-white">Career-Ready Medical Coding Skills</h3>
-									</div>
-									<div data-swiper-parallax="400" class="slide-text">
-										<p>Build expertise in healthcare revenue cycle, medical billing, and coding accuracy with our industry-standard curriculum designed for immediate employment opportunities.</p>
-									</div>
-
-									<div class="clearfix"></div>
-									<div data-swiper-parallax="500" class="slide-btns">
-										<a href="{{route('contact')}}" class="btn-main bg-btn lnk">Enquiry Now <i
-												class="fas fa-chevron-right fa-icon"></i><span
-												class="circle"></span></a>
-									</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<!-- <img src="images/hero/digital-marketing.png"> -->
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-
-			<div class="swiper-pagination"></div>
-			<div class="swiper-button-next"></div>
-			<div class="swiper-button-prev"></div>
-
-		</div>
-	</section>
-
-
-	<section class="about-sec-app" style="background-color: rgba(187, 178, 178, 0.1);">
-    <div class="container">
-        <div class="row align-items-stretch"> <!-- make both columns same height -->
-            
-            <!-- Left content -->
-            <div class="col-lg-6 d-flex">
-                <div class="common-heading text-l my-auto"> <!-- vertically center -->
-                    <h2 class="mb30"><span class="text-second text-bold">WHO WE ARE </span></h2>
-					<p class="text-justify">PojoCoursePilot is a premier healthcare education Academy dedicated to train the Advanced level of medical coding professionals. We specialize in comprehensive medical coding certification programs that prepare students for successful careers in healthcare revenue cycle management, medical billing, and health information management. Our curriculum covers essential coding systems including ICD-10-CM, ICD-10-PCS, CPT, and HCPCS, ensuring graduates are well-equipped with industry-standard knowledge and practical skills.</p>
-                     </div>
-            </div>
-
-            <!-- Right image -->
-            <div class="col-lg-6 d-flex">
-                <div class="funfact w-100 d-flex">
-                    <img src="img/about-2.jpg" class="img-fluid w-100 object-fit-cover" style="border-radius:10px;">
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-	<section class="service-section-app  dark-bg2 pb-5">
-
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-6">
-					<div class="common-heading ptag" style="margin-top:40px;">
-    <h2>Our Highlights</h2>
-</div>
-				</div>
-				<!-- <p class="mb30 text-center">Thanks to the creativity, our Web and
-					Mobile Apps security and stability, integrated solutions and quality
-					services, the Pojo Technology has turned into world's renowned
-					destination for innovation, perceptive and business management
-
-				</p> -->
-			</div>
-			<div class="row upset">
-				<div class="col-lg-4 col-md-6 mt30 wow fadeIn" data-wow-delay="0.2s">
-					<div class="service-card-app hoshd">
-						<h4>Specially designed Curriculum </h4>
-						
-						<div class="tec-icon mt30">
-							<img src="images/h1.jpg" alt="">
-						
-						</div>
-						
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 mt30 wow fadeIn" data-wow-delay="0.5s">
-					<div class="service-card-app hoshd">
-						<h4>Lectures of domain professionals</h4>
-						<ul class="-service-list mt10">
-							
-						</ul>
-						<div class="tec-icon mt30">
-							<ul class="servc-icon-sldr">
-								<img src="images/h2.jpg" alt="">
-
-							</ul>
-						</div>
-						
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 mt30 wow fadeIn" data-wow-delay="0.8s">
-					<div class="service-card-app hoshd">
-					<h4>Modern Learning Environment & Resources</h4>
-						<div class="tec-icon mt30">
-							<ul class="servc-icon-sldr">
-								<img src="images/h3.jpg" alt="">
-                            </ul>
-						</div>
-						
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-6 mt30 wow fadeIn" data-wow-delay="0.8s">
-					<div class="service-card-app hoshd">
-						<h4>Technology Enhanced Learning Platform</h4>
-						
-						<div class="tec-icon mt30">
-							<ul class="servc-icon-sldr">
-								<img src="images/h4.jpg" alt="">
-                            </ul>
-						</div>
-						
-					</div>
-				</div>
-				
-
-				<!-- <div class="col-lg-4 col-md-6 mt30 wow fadeIn" data-wow-delay="0.8s">
-					<div class="service-card-app hoshd">
-						<h4>Corporate Training & Development</h4>
-						<ul class="-service-list mt10">
-						</ul>
-						<div class="tec-icon mt30">
-							<ul class="servc-icon-sldr">
-							<img src="./img/download/schedule-8744592_1280.webp" alt="">
-							</ul>
-						</div>
-						<p class="mt20 text-justify">Unlocking potential through comprehensive training programs that drive innovation, leadership, and business success.</p>
-						<a href="digital-marketing.html" class="mt20 link-prbs">Read More <i
-								class="fas fa fa-arrow-circle-right"></i></a>
-					</div>
-				</div> -->
-				<!-- <div class="col-lg-4 col-md-6 mt30 wow fadeIn" data-wow-delay="0.8s">
-					<div class="service-card-app hoshd">
-						<h4>SEO Optimization</h4>
-						<ul class="-service-list mt10">
-							<li> <a href="#">Google Search Console</a> </li>
-
-						</ul>
-						<div class="tec-icon mt30">
-							<ul class="servc-icon-sldr">
-								<li><a href="#">
-										<div class="img-iconbb"><img src="images/icons/google.png" alt="Google"></div>
-									</a></li>
-
-							</ul>
-						</div>
-						<p class="mt20 text-justify">Get more website traffic, more customers, and more online
-							visibility with powerful SEO services.
-
-						</p>
-						<a href="seo.html" class="mt20 link-prbs">Read More <i
-								class="fas fa fa-arrow-circle-right"></i></a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 mt30 wow fadeIn" data-wow-delay="0.8s">
-					<div class="service-card-app hoshd">
-						<h4>Graphic Design</h4>
-						<ul class="-service-list mt10">
-							<li> <a href="#">Coreldraw</a> </li>
-							<li> <a href="#">Photoshop</a> </li>
-						</ul>
-						<div class="tec-icon mt30">
-							<ul class="servc-icon-sldr">
-								<li><a href="#">
-										<div class="img-iconbb"><img src="images/icons/coreldraw.png" alt="img"></div>
-									</a></li>
-								<li><a href="#">
-										<div class="img-iconbb"><img src="images/icons/photoshop.png" alt="img"></div>
-									</a></li>
-
-							</ul>
-						</div>
-						<p class="mt20 text-justify">If you're looking for a logo design firm for your brand, then
-							you've landed on the right page. </p>
-						<a href="graphic-design.html" class="mt20 link-prbs">Read More <i
-								class="fas fa fa-arrow-circle-right"></i></a>
-					</div> -->
-			</div>
-		</div>
-		</div>
-	</section>
-<section class="why-choose-section">
-    <div class="container">
-        <h2 class="section-title">Why Choose PojoCoursePilot?</h2>
-
-        <div class="why-grid">
-
-            <!-- Box 1 -->
-            <div class="why-box">
-                <div class="why-icon">
-                    <i class="fas fa-user-md"></i>
-                </div>
-                <h3 class="why-title">Certified Trainers</h3>
-                <p class="why-text">Learn from experienced professionals with real-world healthcare and coding expertise.</p>
-            </div>
-
-            <!-- Box 2 -->
-            <div class="why-box">
-                <div class="why-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h3 class="why-title">100% Placement Support</h3>
-                <p class="why-text">We ensure every student gets the right guidance and job opportunities after training.</p>
-            </div>
-
-            <!-- Box 3 -->
-            <div class="why-box">
-                <div class="why-icon">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <h3 class="why-title">Hands-on Practice</h3>
-                <p class="why-text">Gain practical knowledge with real case studies, mock tests, and live sessions.</p>
-            </div>
-
-            <!-- Box 4 -->
-            <div class="why-box">
-                <div class="why-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3 class="why-title">Certification Exam Guidance</h3>
-                <p class="why-text">Step-by-step guidance for AAPC/AHIMA certification preparation, including mock tests and study materials.</p>
-            </div>
-
-            <!-- Box 5 -->
-            <div class="why-box">
-                <div class="why-icon">
-                    <i class="fas fa-book"></i>
-                </div>
-                <h3 class="why-title">Industry-Aligned Curriculum</h3>
-                <p class="why-text">Our syllabus follows the latest AHIMA and AAPC guidelines, ensuring you stay up-to-date with global coding standards.</p>
-            </div>
-
-            <!-- Box 6 -->
-            <div class="why-box">
-                <div class="why-icon">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <h3 class="why-title">Flexible Learning Options</h3>
-                <p class="why-text">Choose classroom, online, or hybrid learning — designed to fit your timing and convenience.</p>
-            </div>
-
-            <!-- Box 7 -->
-            <div class="why-box">
-                <div class="why-icon">
-                    <i class="fas fa-wallet"></i>
-                </div>
-                <h3 class="why-title">Affordable Fees</h3>
-                <p class="why-text">We offer cost-effective courses with flexible payment plans to make quality education accessible to everyone.</p>
-            </div>
-
-            <!-- Box 8 -->
-            <div class="why-box">
-                <div class="why-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <h3 class="why-title">Student Success Stories</h3>
-                <p class="why-text">Many of our students have successfully started their careers in top medical coding companies and healthcare organizations.</p>
-            </div>
-
-            <!-- Box 9 -->
-            {{-- <div class="why-box">
-                <div class="why-icon">
-                    <i class="fas fa-video"></i>
-                </div>
-                <h3 class="why-title">Live Demos</h3>
-                <p class="why-text">Every week, you can join our live demo classes handled by real-time expert faculties.</p>
-            </div> --}}
-
-        </div>
-    </div>
-</section>
-
-<style>
-.why-choose-section {
-    background-color: #f8f9fa;
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.why-choose-section .section-title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    color: #333;
-}
-
-.why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.why-box {
+/* Step Cards */
+.ah-step-card {
     background: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: var(--ah-radius-md);
+    padding: 30px 24px;
+    border: 1px solid var(--ah-border);
+    box-shadow: var(--ah-card-shadow);
+    position: relative;
+    height: 100%;
+    transition: all 0.3s ease;
 }
 
-.why-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+.ah-step-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--ah-hover-shadow);
+    border-color: rgba(10, 77, 104, 0.25);
 }
 
-.why-icon {
-    font-size: 40px;
-    color: #4a90d9;
-    margin-bottom: 15px;
+.ah-step-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 44px;
+    font-weight: 800;
+    color: rgba(10, 77, 104, 0.08);
+    line-height: 1;
 }
 
-.why-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
+/* Testimonials */
+.ah-testimonial-card {
+    background: #ffffff;
+    border-radius: var(--ah-radius-lg);
+    padding: 32px 28px;
+    border: 1px solid var(--ah-border);
+    box-shadow: var(--ah-card-shadow);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.why-text {
-    font-size: 16px;
-    color: #666;
-    line-height: 1.6;
-}
-.review-img{
-width:50%;
-height:150px;
-object-fit:contain;
-border-radius:12px;
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
-transition:0.3s;
-}
-.review-img{
-width:250%;
-height:auto;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-.review-img:hover{
-transform:translateY(-6px);
-box-shadow:0 12px 25px rgba(0,0,0,0.25);
-}
-
-.review-card{
-background:#fff;
-padding:20px;
-border-radius:12px;
-box-shadow:0 5px 20px rgba(0,0,0,0.08);
-max-width:600px;
-margin:auto;
-font-family:Arial, sans-serif;
-}
-
-.review-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:10px;
-}
-
-.review-user{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.review-avatar{
-width:40px;
-height:40px;
-border-radius:50%;
-background:#5f8f3d;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-font-size:18px;
-}
-
-.review-info h6{
-margin:0;
-font-weight:600;
-font-size:15px;
-}
-
-.review-info span{
-font-size:12px;
-color:#777;
-}
-
-.review-menu{
-font-size:18px;
-color:#777;
-}
-
-.review-rating{
-margin-bottom:10px;
-}
-
-.stars{
-color:#fbbc05;
-font-size:14px;
-margin-right:10px;
-}
-
-.review-time{
-font-size:13px;
-color:#777;
-margin-right:10px;
-}
-
-.review-new{
-font-size:11px;
-background:#eee;
-padding:2px 6px;
-border-radius:4px;
-}
-
-.review-text{
-font-size:14px;
-line-height:1.6;
-color:#444;
-}
-.review-card{
-background:#fff;
-padding:20px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-height:260px;                 /* same height for all boxes */
-display:flex;
-flex-direction:column;
-}
-
-.review-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:8px;
-}
-
-.review-user{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.review-avatar{
-width:40px;
-height:40px;
-border-radius:50%;
-background:#6c9c3b;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-font-size:16px;
-}
-
-.review-info h6{
-margin:0;
-font-size:15px;
-font-weight:600;
-}
-
-.review-info span{
-font-size:12px;
-color:#777;
-}
-
-.review-rating{
-font-size:13px;
-margin-bottom:6px;
-}
-
-.stars{
-color:#fbbc05;
-margin-right:6px;
-}
-
-.review-time{
-color:#777;
-}
-
-.review-new{
-background:#eee;
-padding:2px 6px;
-font-size:11px;
-border-radius:4px;
-margin-left:5px;
-}
-
-.review-text{
-font-size:13px;
-color:#444;
-line-height:1.5;
-overflow:hidden;
-display:-webkit-box;
--webkit-line-clamp:5;      /* limits text lines */
--webkit-box-orient:vertical;
-}
-/* subtitle text */
-.journey-subtitle{
-color:#0b4f74;
-}
-
-/* hexagon border */
-.hexagon-card{
-border:2px solid #0b4f74;
-}
-
-/* step number circle */
-.step-badge{
-background:#0b4f74;
-color:#fff;
-}
-
-/* icon border hover if exists */
-.journey-item:hover .hexagon-card{
-border-color:#0b4f74;
-}
-.hexagon-card{
-border-color:#0b4f74 !important;
-}
-
-.step-badge{
-background:#0b4f74 !important;
-}
-
-.google-review-btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:12px 24px;
-border-radius:999px;
-background:linear-gradient(135deg,#0b4f74 0%, #1a7aa8 100%);
-border:1px solid rgba(11,79,116,0.14);
-color:#fff !important;
-font-weight:700;
-letter-spacing:0.01em;
-text-decoration:none;
-box-shadow:0 14px 30px rgba(11,79,116,0.22);
-transition:transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
-}
-
-.google-review-btn:hover,
-.google-review-btn:focus{
-color:#fff !important;
-transform:translateY(-2px);
-box-shadow:0 18px 36px rgba(11,79,116,0.28);
-filter:brightness(1.04);
-}
-
-.google-review-btn:active{
-transform:translateY(0);
-box-shadow:0 10px 20px rgba(11,79,116,0.2);
+.star-rating {
+    color: #f59e0b;
+    font-size: 14px;
+    margin-bottom: 14px;
 }
 </style>
 
-<section class="google-review-section py-5">
-<div class="container">
-
-<h4 class="text-center mb-5">
-EXCELLENT ⭐⭐⭐⭐⭐ 163 reviews <span style="color:#4285F4;">Google</span>
-</h4>
-<div class="text-center mb-4">
-    <a href="https://g.page/r/CTvURxkJJfRZEBM/review" target="_blank" class="google-review-btn">
-        Review Us on Google
-    </a>
-    <a href="https://g.page/r/CTvURxkJJfRZEBM/review" target="_blank" class="google-review-btn" style="margin-left:12px;">
-        View Google Reviews
-    </a>
-</div>
-
-<div class="row justify-content-center">
-
-<div class="col-lg-4 col-md-6 mb-4">
-<div class="review-card">
-
-<div class="review-header">
-
-<div class="review-user">
-<div class="review-avatar">J</div>
-
-<div class="review-info">
-<h6>Jaheer Jaheer</h6>
-<span>1 review</span>
-</div>
-</div>
-
-<div class="review-menu">⋮</div>
-
-</div>
-
-
-<div class="review-rating">
-<span class="stars">★★★★★</span>
-<span class="review-time">2 weeks ago</span>
-<span class="review-new">NEW</span>
-</div>
-
-
-<p class="review-text">
-It's a wonderful experience with imi academy. Their material is short, precise, and pictures are highlighted. Teaching is also very good.
-</p>
-
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6 mb-4">
-<div class="review-card">
-
-<div class="review-header">
-
-<div class="review-user">
-<div class="review-avatar" style="background:#9c4dcc;">J</div>
-
-<div class="review-info">
-<h6>Jayantha Rajaganapathi</h6>
-<span>3 reviews</span>
-</div>
-</div>
-
-<div class="review-menu">⋮</div>
-
-</div>
-
-<div class="review-rating">
-<span class="stars">★★★★★</span>
-<span class="review-time">2 months ago</span>
-</div>
-
-<p class="review-text">
-This medical academy provides excellent teaching with clear concepts and structured guidance. 
-The faculty are highly knowledgeable, approachable, and supportive throughout the course. 
-Highly recommended!!!
-</p>
-
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6 mb-4">
-<div class="review-card">
-
-<div class="review-header">
-
-<div class="review-user">
-
-<div class="review-avatar" style="width:40px;height:40px;border-radius:50%;">G
-</div>
-
-<div class="review-info">
-<h6>Gomathi V</h6>
-<span>3 reviews</span>
-</div>
-
-</div>
-
-<div class="review-menu">⋮</div>
-
-</div>
-
-
-<div class="review-rating">
-<span class="stars">★★★★★</span>
-<span class="review-time">2 months ago</span>
-</div>
-
-
-<p class="review-text">
-It is a good platform for learning medical billing. The training is going very well, and it is very helpful for my future. The trainers are well-knowledgeable and clear doubts immediately. They also conduct assessments, which are very helpful.
-</p>
-
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6 mb-4">
-<div class="review-card">
-
-<div class="review-header">
-<div class="review-user">
-
-<div class="review-avatar" style="width:40px;height:40px;border-radius:50%;">S</div>
-
-<div class="review-info">
-<h6>SOWNDARIYA M</h6>
-<span>1 review</span>
-</div>
-
-</div>
-
-<div class="review-menu">⋮</div>
-</div>
-
-<div class="review-rating">
-<span class="stars">★★★★★</span>
-<span class="review-time">2 months ago</span>
-</div>
-
-<p class="review-text">
-Thank you for this wonderful opportunity....this class helps for my future carrier....once again Thank you for vetri nichayam team and big thanks for TN CM Stalin sir.....Salem district Sarah flash and IMI academy CEOs and bigggg thanks for my trainers....
-</p>
-
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6 mb-4">
-<div class="review-card">
-
-<div class="review-header">
-<div class="review-user">
-
-<div class="review-avatar" style="background:#1a8f7a;">K</div>
-
-<div class="review-info">
-<h6>Kalaivarasan P</h6>
-<span>1 review</span>
-</div>
-
-</div>
-
-<div class="review-menu">⋮</div>
-</div>
-
-<div class="review-rating">
-<span class="stars">★★★★★</span>
-<span class="review-time">a week ago</span>
-<span class="review-new">NEW</span>
-</div>
-
-<p class="review-text">
-Medical coding training conducting our college and so our college invite a IMI academy of medical coding.... overall IMI trainers teach in step by step and also easily understand of Anatomy and Physiology, pathology, ICD convention...
-</p>
-
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6 mb-4">
-<div class="review-card">
-
-<div class="review-header">
-<div class="review-user">
-
-<div class="review-avatar" style="width:40px;height:40px;border-radius:50%;">S
-</div>
-
-<div class="review-info">
-<h6>Surya Prakash</h6>
-<span>1 review</span>
-</div>
-
-</div>
-
-<div class="review-menu">⋮</div>
-</div>
-
-<div class="review-rating">
-<span class="stars">★★★★★</span>
-<span class="review-time">4 months ago</span>
-</div>
-
-<p class="review-text">
-15 days of medical coding class was a well-structured learning experience. It provided a basic knowledge in anatomy, physiology and pathology, ICD-10, and CPT coding systems. The trainers are very kindly and friendly and teach those topics in a simple understandable form.
-</p>
-
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6 mb-4">
-<div class="review-card">
-
-<div class="review-header">
-<div class="review-user">
-
-<div class="review-avatar" style="width:40px;height:40px;border-radius:50%;">S
-</div>
-
-<div class="review-info">
-<h6>SANMUGAM C</h6>
-<span>3 reviews</span>
-</div>
-
-</div>
-
-<div class="review-menu">⋮</div>
-</div>
-
-<div class="review-rating">
-<span class="stars">★★★★★</span>
-<span class="review-time">4 months ago</span>
-</div>
-
-<p class="review-text">
-Trainers highlight specific strengths and weaknesses, such as their knowledge, communication style, and ability to explain complex topics like ICD-10, CPT, and HCPCS. Overall medical coding is an interesting topic. 
-</p>
-
-</div>
-</div>
-
-<div class="col-lg-4 col-md-6 mb-4">
-<div class="review-card">
-
-<div class="review-header">
-<div class="review-user">
-
-<div class="review-avatar" style="width:40px;height:40px;border-radius:50%;">R
-</div>
-
-<div class="review-info">
-<h6>077 Roshan</h6>
-<span>1 review</span>
-</div>
-
-</div>
-
-<div class="review-menu">⋮</div>
-</div>
-
-<div class="review-rating">
-<span class="stars">★★★★☆</span>
-<span class="review-time">a year ago</span>
-</div>
-
-<p class="review-text">
-I have successfully completed Medical coding course is very useful to me. They clear one on one clarifications and make us ready to create great things. I am glad to find these and learn from you. Overall I am happy to learn from you.
-<br><br>
-"THANK YOU"
-</p>
-
-</div>
-</div>
-
-</div>
-</div>
-
-<section class="journey-section">
-    <div class="container">
-
-		<h3 class="journey-subtitle">PojoCoursePilot</h3>
-        <h2 class="journey-title">Journey Ahead: Our Path Forward</h2>
-
-        <div class="journey-grid" style="justify-content: center;">
-
-            <!-- Item 1 -->
-            <div class="journey-item">
-                <div class="hexagon-card">
-                    <img src="images/icon1.png" class="journey-icon" alt="icon">
+<!-- =========================================================================
+     HERO SLIDER
+     ========================================================================= -->
+<section class="hero-slider-section">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            @if(isset($banners) && count($banners) > 0)
+                @foreach($banners as $banner)
+                <div class="swiper-slide">
+                    <div class="hero-slide-item" style="background-image: url('{{ $banner->image_url }}');">
+                        <div class="hero-gradient-overlay"></div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="hero-slide-content">
+                                        <span class="ah-badge-pill" style="background: rgba(255,255,255,0.18); color: #ffffff; border: 1px solid rgba(255,255,255,0.25);">
+                                            <i class="fas fa-heartbeat text-info me-1"></i> 24/7 Professional In-Home Healthcare
+                                        </span>
+                                        <h1 class="hero-title">{{ $banner->title }}</h1>
+                                        @if($banner->subtitle)
+                                            <p class="hero-subtitle">{{ $banner->subtitle }}</p>
+                                        @endif
+                                        <div class="d-flex gap-3 flex-wrap pt-2">
+                                            <a href="{{ route('service') }}" class="ah-btn-primary" style="padding: 13px 28px; font-size: 15px;">
+                                                <i class="fas fa-stethoscope"></i> Our Services
+                                            </a>
+                                            <a href="{{ route('contact') }}" class="btn btn-outline-light px-4 py-3 fw-bold" style="border-radius: var(--ah-radius-sm); font-size: 15px;">
+                                                <i class="fas fa-envelope me-1"></i> Contact Us
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <span class="step-badge">01</span>
-
-                <h4 class="journey-heading">PojoCoursePilot Established</h4>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="journey-item">
-                <div class="hexagon-card">
-                    <img src="images/icon2.png" class="journey-icon" alt="icon">
+                @endforeach
+            @else
+                <div class="swiper-slide">
+                    <div class="hero-slide-item" style="background-image: url('{{ asset('img/angelhug_docx/image5.png') }}');">
+                        <div class="hero-gradient-overlay"></div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="hero-slide-content">
+                                        <span class="ah-badge-pill" style="background: rgba(255,255,255,0.18); color: #ffffff;">
+                                            <i class="fas fa-heartbeat text-info me-1"></i> Compassionate Home Nursing
+                                        </span>
+                                        <h1 class="hero-title">Dedicated Care & Medical Assistance at Your Doorstep</h1>
+                                        <p class="hero-subtitle">
+                                            Angelhug brings trusted, licensed nurses, specialized geriatric caregivers, and therapists directly to your home with transparent pricing.
+                                        </p>
+                                        <div class="d-flex gap-3 flex-wrap pt-2">
+                                            <a href="{{ route('service') }}" class="ah-btn-primary">
+                                                <i class="fas fa-stethoscope"></i> Our Services
+                                            </a>
+                                            <a href="{{ route('contact') }}" class="btn btn-outline-light px-4 py-2 fw-bold">
+                                                Contact Us
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <span class="step-badge">02</span>
-
-                <h4 class="journey-heading">100 plus projects & 50 plus Research Scholars</h4>
-            </div>
-
-            <!-- Item 3 -->
-            {{-- <div class="journey-item">
-                <div class="hexagon-card">
-                    <img src="images/icon3.png" class="journey-icon" alt="icon">
-                </div>
-                <span class="step-badge">03</span>
-
-                <h4 class="journey-heading">Upgraded to “Digital University Kerala” in 2020</h4>
-            </div> --}}
-
+            @endif
         </div>
 
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next d-none d-md-flex"></div>
+        <div class="swiper-button-prev d-none d-md-flex"></div>
     </div>
 </section>
-<section class="companies-section">
-<div class="container-fluid px-0">
 
-<h2 class="companies-title">Medical Coding Companies</h2>
-
-<div class="logo-slider">
-<div class="logo-track">
-
-<div class="logo-box"><img src="img/miramed-ajuba.jpg"></div>
-<div class="logo-box"><img src="img/episource.jfif"></div>
-<div class="logo-box"><img src="img/advantum-health.png"></div>
-<div class="logo-box"><img src="img/apexon-health.jpg"></div>
-<div class="logo-box"><img src="img/vee-healthtek.jpg"></div>
-<div class="logo-box"><img src="img/axis-healthcare.png"></div>
-<div class="logo-box"><img src="img/access.jpg"></div>
-<div class="logo-box"><img src="img/ags.jfif"></div>
-<div class="logo-box"><img src="img/omega.png"></div>
-<div class="logo-box"><img src="img/optum.png"></div>  
-<div class="logo-box"><img src="img/corro.png"></div>
-<div class="logo-box"><img src="img/oobs.jpg"></div>          
-
-<!-- duplicate logos for smooth infinite scroll -->
-
-<div class="logo-box"><img src="img/miramed-ajuba.jfif"></div>
-<div class="logo-box"><img src="img/episource.jfif"></div>
-<div class="logo-box"><img src="img/advantum-health.png"></div>
-<div class="logo-box"><img src="img/apexon-health.jfif"></div>
-<div class="logo-box"><img src="img/vee-healthtek.jfif"></div>
-<div class="logo-box"><img src="img/axis-healthcare.png"></div>
-<div class="logo-box"><img src="img/access.jfif"></div>
-<div class="logo-box"><img src="img/ags.jfif"></div>
-<div class="logo-box"><img src="img/omega.png"></div>
-<div class="logo-box"><img src="img/optum.png"></div>  
-<div class="logo-box"><img src="img/corro.png"></div>  
-<div class="logo-box"><img src="img/oobs.jpg"></div> 
-</div>
+<!-- =========================================================================
+     STATS RIBBON AFTER HERO
+     ========================================================================= -->
+<div class="container">
+    <div class="ah-stats-ribbon">
+        <div class="row g-4 align-items-center">
+            <div class="col-6 col-lg-3">
+                <div class="ah-stat-item border-end-lg">
+                    <div class="ah-stat-number"><i class="fas fa-user-shield text-primary me-2"></i>500+</div>
+                    <div class="ah-stat-label">Happy Patients Cared</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="ah-stat-item border-end-lg">
+                    <div class="ah-stat-number text-success"><i class="fas fa-certificate text-success me-2"></i>100%</div>
+                    <div class="ah-stat-label">Certified & Vetted Staff</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="ah-stat-item border-end-lg">
+                    <div class="ah-stat-number" style="color: var(--ah-cyan);"><i class="fas fa-clock me-2"></i>24/7</div>
+                    <div class="ah-stat-label">On-Call Support & Visits</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="ah-stat-item">
+                    <div class="ah-stat-number" style="color: var(--ah-gold);"><i class="fas fa-star me-2"></i>4.9★</div>
+                    <div class="ah-stat-label">Family Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<style>
-.companies-section{
-background:#f7f7f7;
-padding:70px 0 ;
-text-align:center;
-overflow:hidden;
-margin:0;
-}
+<!-- =========================================================================
+     ABOUT ANGELHUG (WHO WE ARE)
+     ========================================================================= -->
+<section class="py-5" style="background: #ffffff; padding-top: 16px !important;">
+    <div class="container py-4">
+        <div class="row align-items-center g-5">
+            <!-- Left Narrative -->
+            <div class="col-lg-6">
+                @php
+                    $homeBrandName = \App\Models\Setting::get('brand_name', 'Angelhug');
+                    $homeAboutBadge = \App\Models\Setting::get('about_badge', 'About ' . $homeBrandName);
+                    $homeAboutTitle = \App\Models\Setting::get('about_title', \App\Http\Controllers\AdminWebsiteSettingController::DEFAULT_ABOUT_TITLE);
+                    $homeAboutDesc1 = \App\Models\Setting::get('about_description_1', \App\Http\Controllers\AdminWebsiteSettingController::DEFAULT_ABOUT_DESC_1);
+                    $homeAboutDesc2 = \App\Models\Setting::get('about_description_2', \App\Http\Controllers\AdminWebsiteSettingController::DEFAULT_ABOUT_DESC_2);
+                    $homeAboutPoint1 = \App\Models\Setting::get('about_point_1', \App\Http\Controllers\AdminWebsiteSettingController::DEFAULT_ABOUT_POINT_1);
+                    $homeAboutPoint2 = \App\Models\Setting::get('about_point_2', \App\Http\Controllers\AdminWebsiteSettingController::DEFAULT_ABOUT_POINT_2);
+                    $homeAboutPoint3 = \App\Models\Setting::get('about_point_3', \App\Http\Controllers\AdminWebsiteSettingController::DEFAULT_ABOUT_POINT_3);
+                    $homeAboutPoint4 = \App\Models\Setting::get('about_point_4', \App\Http\Controllers\AdminWebsiteSettingController::DEFAULT_ABOUT_POINT_4);
+                @endphp
+                <span class="ah-badge-pill"><i class="fas fa-info-circle me-1"></i> {{ $homeAboutBadge }}</span>
+                <h2 class="ah-section-title mb-3">{{ $homeAboutTitle }}</h2>
+                <p class="text-muted" style="line-height: 1.8; font-size: 15.5px;">
+                    {!! nl2br(e($homeAboutDesc1)) !!}
+                </p>
+                @if(!empty($homeAboutDesc2))
+                <p class="text-muted" style="line-height: 1.8; font-size: 15.5px;">
+                    {!! nl2br(e($homeAboutDesc2)) !!}
+                </p>
+                @endif
 
-.companies-title{
-color:#e05252;
-margin-bottom:40px;
-font-weight:600;
-}
+                <!-- Checkpoints -->
+                <div class="row g-3 mt-2 mb-4">
+                    @if(!empty($homeAboutPoint1))
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success fs-5"></i>
+                            <span class="fw-bold text-dark">{{ $homeAboutPoint1 }}</span>
+                        </div>
+                    </div>
+                    @endif
+                    @if(!empty($homeAboutPoint2))
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success fs-5"></i>
+                            <span class="fw-bold text-dark">{{ $homeAboutPoint2 }}</span>
+                        </div>
+                    </div>
+                    @endif
+                    @if(!empty($homeAboutPoint3))
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success fs-5"></i>
+                            <span class="fw-bold text-dark">{{ $homeAboutPoint3 }}</span>
+                        </div>
+                    </div>
+                    @endif
+                    @if(!empty($homeAboutPoint4))
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-check-circle text-success fs-5"></i>
+                            <span class="fw-bold text-dark">{{ $homeAboutPoint4 }}</span>
+                        </div>
+                    </div>
+                    @endif
+                </div>
 
-/* slider container */
-.logo-slider{
-overflow:hidden;
-position:relative;
-width:100%;
-padding: 0 80px;
-box-sizing: border-box;
-}
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="{{ route('service') }}" class="ah-btn-primary">
+                        <i class="fas fa-stethoscope"></i> Explore Services
+                    </a>
+                    <a href="{{ route('about') }}" class="ah-btn-outline">
+                        Learn More About Us
+                    </a>
+                </div>
+            </div>
 
-/* moving track */
-.logo-track{
-display:flex;
-gap:30px;
-width:max-content;
-animation:scroll 35s linear infinite;
-}
-
-/* logo box */
-.logo-box{
-width:180px;
-height:100px;
-background:#fff;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-padding:10px;
-flex-shrink:0;
-}
-
-/* logo image */
-.logo-box img{
-max-width:140px;
-max-height:60px;
-object-fit:contain;
-}
-
-/* animation */
-@keyframes scroll{
-0%{
-transform:translateX(0);
-}
-100%{
-transform:translateX(-50%);
-}
-}
-</style>
-</div>
+            <!-- Right Image Showcase -->
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    @php
+                        $aboutImage = \App\Models\Setting::get('about_image');
+                        $aboutImageUrl = $aboutImage ? asset('storage/' . $aboutImage) : asset('img/about_nurse_patient.jpg');
+                    @endphp
+                    <img src="{{ $aboutImageUrl }}" alt="{{ \App\Models\Setting::get('brand_name', 'Angelhug') }} Healthcare" 
+                         class="img-fluid rounded-4 shadow-lg w-100" style="object-fit: cover; max-height: 480px; border: 1px solid rgba(4, 132, 68, 0.15);">
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
+<!-- =========================================================================
+     FEATURED HEALTHCARE SERVICES
+     ========================================================================= -->
+<section class="py-5 ah-light-bg" id="servicesSection">
+    <div class="container py-4">
+        <!-- Section Header -->
+        <div class="text-center mb-5">
+            <span class="ah-badge-pill"><i class="fas fa-hand-holding-medical me-1"></i> Dedicated Solutions</span>
+            <h2 class="ah-section-title">Our Healthcare Services</h2>
+            <p class="ah-section-subtitle">
+                Explore our specialized services below. Click <strong>"Book This Service"</strong> on any card to choose your date, time slot, and confirm online.
+            </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="row g-4">
+            @if(isset($services) && count($services) > 0)
+                @foreach($services as $service)
+                <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+                    <div class="ah-service-card w-100 d-flex flex-column">
+                        <!-- Image & Price Tag -->
+                        <div class="ah-service-img-wrapper">
+                            <img src="{{ $service->image_url }}" alt="{{ $service->title }}">
+                            @if($service->price > 0)
+                                <div class="ah-service-price-tag">
+                                    {{ $service->formatted_price }}
+                                </div>
+                            @endif
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="ah-service-body d-flex flex-column flex-grow-1">
+                            <div class="ah-service-meta">
+                                @if($service->duration)
+                                    <span><i class="far fa-clock text-primary me-1"></i> {{ $service->duration }}</span>
+                                @endif
+                                <span class="ms-auto"><i class="fas fa-shield-alt text-success me-1"></i> Verified</span>
+                            </div>
+
+                            <h3 class="ah-service-title">{{ $service->title }}</h3>
+
+                            <p class="ah-service-desc mb-3" style="flex-grow: 0;">
+                                {{ Str::limit($service->subtitle ?: strip_tags($service->description), 110) }}
+                            </p>
+
+                            @if($service->subServices && $service->subServices->isNotEmpty())
+                            @php
+                                $minHomePrice = $service->subServices->min('price');
+                            @endphp
+                            <!-- Inline Sub-Services (NO POPUP) -->
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-sm btn-light border w-100 text-start d-flex justify-content-between align-items-center py-2 px-3 rounded-3" 
+                                        style="background: #f0fdf4; border-color: #bbf7d0 !important;"
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#homeCardSub{{ $service->id }}" 
+                                        aria-expanded="false">
+                                    <span class="fw-bold text-success" style="font-size: 12px;">
+                                        <i class="fas fa-layer-group me-1"></i> {{ $service->subServices->count() }} Care Plans
+                                    </span>
+                                    <span class="badge bg-white text-success border border-success-subtle fw-bold" style="font-size: 11px;">
+                                        From ₹{{ number_format($minHomePrice, 0) }} <i class="fas fa-chevron-down ms-1" style="font-size: 9px;"></i>
+                                    </span>
+                                </button>
+
+                                <div class="collapse mt-2" id="homeCardSub{{ $service->id }}">
+                                    <div class="p-2 border rounded-3 bg-light d-flex flex-column gap-2" style="border-color: #e2e8f0 !important;">
+                                        @foreach($service->subServices as $sub)
+                                        <div class="p-2 bg-white rounded-2 border" style="border-color: #e2e8f0 !important;">
+                                            <div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+                                                <strong class="text-dark small text-wrap" style="font-size: 12px; line-height: 1.35;">{{ $sub->title }}</strong>
+                                                <span class="badge bg-light text-success border border-success-subtle fw-bold flex-shrink-0" style="font-size: 11px;">
+                                                    {{ $sub->formatted_price }}
+                                                </span>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center pt-1">
+                                                <small class="text-muted" style="font-size: 10.5px;"><i class="far fa-clock text-primary me-1"></i> {{ $sub->duration ?: 'Shift' }}</small>
+                                                <a href="{{ route('booking.create', ['service_id' => $service->id, 'sub_service' => $sub->id]) }}" 
+                                                   class="btn btn-sm btn-success px-2.5 py-0.5 text-white fw-bold" 
+                                                   style="font-size: 11px; border-radius: 6px; background-color: #048444; border-color: #048444;">
+                                                    Book <i class="fas fa-arrow-right ms-0.5"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                        <a href="{{ route('servicedetails', $service->id) }}#carePlansSection" class="text-center text-success small fw-bold text-decoration-none py-1" style="font-size: 11.5px;">
+                                            View Inclusions Checklist <i class="fas fa-arrow-right ms-1"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+
+                            <!-- Booking & Details Button (Single direct link) -->
+                            <div class="pt-2 border-top mt-auto">
+                                <a href="{{ route('servicedetails', $service->id) }}" class="ah-btn-primary w-100 justify-content-center py-2.5 shadow-sm" title="View details and book service">
+                                    <i class="fas fa-calendar-check me-2"></i> Book / View Service
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            @else
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted">Services are being loaded. Please check back shortly.</p>
+                </div>
+            @endif
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{{ route('service') }}" class="ah-btn-outline px-4 py-3" style="font-size: 15px;">
+                View All Services & Packages <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
 </section>
- @include('footer')
 
+<!-- =========================================================================
+     WHY CHOOSE ANGELHUG
+     ========================================================================= -->
+<section class="py-5" style="background: #ffffff;">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="ah-badge-pill ah-badge-accent"><i class="fas fa-award me-1"></i> Why Angelhug</span>
+            <h2 class="ah-section-title">Why Families Entrust Us With Their Loved Ones</h2>
+            <p class="ah-section-subtitle">
+                We blend medical excellence with personal warmth, giving families total peace of mind every single day.
+            </p>
+        </div>
 
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="ah-feature-card">
+                    <div class="ah-feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Licensed & Vetted Staff</h5>
+                    <p class="text-muted small mb-0">Every nurse and caregiver undergoes stringent background screening, credential checks, and hospital clinical training.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="ah-feature-card">
+                    <div class="ah-feature-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Tailored Care Plans</h5>
+                    <p class="text-muted small mb-0">We customize our nursing routines to align precisely with patient mobility, vital schedules, and physician guidelines.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="ah-feature-card">
+                    <div class="ah-feature-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Transparent Pricing</h5>
+                    <p class="text-muted small mb-0">Clear, upfront rates with no surprise charges. Easy online OTP booking and secure Razorpay payment options.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="ah-feature-card">
+                    <div class="ah-feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">24/7 Family Updates</h5>
+                    <p class="text-muted small mb-0">Detailed daily health and vital log updates so you always stay informed of your loved one's wellness progress.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================================
+     HOW IT WORKS (3 SIMPLE STEPS)
+     ========================================================================= -->
+<section class="py-5 ah-light-bg">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="ah-badge-pill"><i class="fas fa-route me-1"></i> Simple Process</span>
+            <h2 class="ah-section-title">How To Receive Care in 3 Easy Steps</h2>
+            <p class="ah-section-subtitle">
+                Scheduling trusted in-home healthcare takes only a few minutes.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="ah-step-card">
+                    <div class="ah-step-number">01</div>
+                    <div class="ah-feature-icon">
+                        <i class="fas fa-th-list"></i>
+                    </div>
+                    <h4 class="fw-bold mb-2" style="color: var(--ah-primary);">1. Browse Services</h4>
+                    <p class="text-muted mb-0" style="font-size: 14.5px;">
+                        Explore our service offerings—from elderly care and post-operative recovery to mother & newborn assistance or therapy.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ah-step-card">
+                    <div class="ah-step-number">02</div>
+                    <div class="ah-feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4 class="fw-bold mb-2" style="color: var(--ah-primary);">2. Choose Date & Time</h4>
+                    <p class="text-muted mb-0" style="font-size: 14.5px;">
+                        Click "Book This Service", choose your preferred date, select a convenient time slot, verify your mobile via OTP, and confirm.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ah-step-card">
+                    <div class="ah-step-number">03</div>
+                    <div class="ah-feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4 class="fw-bold mb-2" style="color: var(--ah-primary);">3. Compassionate Home Care</h4>
+                    <p class="text-muted mb-0" style="font-size: 14.5px;">
+                        Our licensed nurse or therapist arrives right at your doorstep on schedule, ready to deliver attentive, high-standard healthcare.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================================
+     PATIENT & FAMILY TESTIMONIALS
+     ========================================================================= -->
+<section class="py-5" style="background: #ffffff;">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="ah-badge-pill ah-badge-accent"><i class="fas fa-quote-left me-1"></i> Patient Feedback</span>
+            <h2 class="ah-section-title">Stories of Healing & Relief</h2>
+            <p class="ah-section-subtitle">
+                Read what families across Chennai say about their journey with Angelhug caregivers.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="ah-testimonial-card">
+                    <div>
+                        <div class="star-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-muted fst-italic mb-4" style="line-height: 1.7; font-size: 14.5px;">
+                            "The post-operative nursing care my father received from Angelhug was outstanding. The nurse managed his surgical dressings and medication on time every day. It gave our whole family immense relief."
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center text-primary fw-bold" style="width: 44px; height: 44px;">
+                            RK
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold" style="color: var(--ah-slate-900);">Rajesh Kumar</h6>
+                            <small class="text-muted">Virugambakkam, Chennai</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ah-testimonial-card">
+                    <div>
+                        <div class="star-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-muted fst-italic mb-4" style="line-height: 1.7; font-size: 14.5px;">
+                            "As a new mother, having Angelhug’s newborn care specialist at home was a lifesaver. She was so gentle with our baby and guided me with feeding and sleep schedules. Truly grateful!"
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center text-primary fw-bold" style="width: 44px; height: 44px;">
+                            SP
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold" style="color: var(--ah-slate-900);">Sujatha Parthasarathy</h6>
+                            <small class="text-muted">Anna Nagar, Chennai</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ah-testimonial-card">
+                    <div>
+                        <div class="star-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-muted fst-italic mb-4" style="line-height: 1.7; font-size: 14.5px;">
+                            "My 82-year-old mother requires daily mobility support and vital checks. Angelhug provided a wonderful geriatric caregiver who treats her with utmost respect and affection."
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center text-primary fw-bold" style="width: 44px; height: 44px;">
+                            MN
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold" style="color: var(--ah-slate-900);">M. Narayanan</h6>
+                            <small class="text-muted">Tambaram, Chennai</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================================
+     CALLOUT CTA BANNER
+     ========================================================================= -->
+<section class="py-5 text-white" style="background: linear-gradient(135deg, var(--ah-primary-dark) 0%, var(--ah-primary) 100%);">
+    <div class="container py-4 text-center">
+        <h2 class="text-white fw-bold display-6 mb-3">Have Questions or Need Immediate Patient Care?</h2>
+        <p class="lead text-white-50 mb-4 mx-auto" style="max-width: 650px;">
+            Our healthcare coordinators are available to discuss customized care plans for your family members.
+        </p>
+        @php
+            $contactPhone = \App\Models\Setting::get('contact_phone', '+91 80725 15050');
+        @endphp
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ route('service') }}" class="btn btn-light px-4 py-3 fw-bold shadow-sm" style="border-radius: var(--ah-radius-sm); color: var(--ah-primary) !important;">
+                <i class="fas fa-stethoscope me-2"></i> Browse Our Services
+            </a>
+            <a href="tel:{{ preg_replace('/[^0-9+]/', '', $contactPhone) }}" class="btn btn-outline-light px-4 py-3 fw-bold" style="border-radius: var(--ah-radius-sm);">
+                <i class="fas fa-phone-alt me-2"></i> Call {{ $contactPhone }}
+            </a>
+            <a href="{{ route('contact') }}" class="btn btn-outline-info text-white px-4 py-3 fw-bold" style="border-radius: var(--ah-radius-sm);">
+                <i class="fas fa-envelope me-2"></i> Send Enquiry
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            speed: 700
+        });
+    }
+});
+</script>
+
+@include('footer')

@@ -174,7 +174,7 @@ class PaymentController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'nullable|email|max:255',
             'mobile_no' => 'required|numeric|digits:10'
         ]);
 
@@ -183,7 +183,7 @@ class PaymentController extends Controller
         }
 
         $name = $request->input('name');
-        $email = $request->input('email');
+        $email = $request->filled('email') ? $request->input('email') : null;
         $mobile = $request->mobile_no;
         $user = User::updateOrCreate(
             ['mobile_no' => $mobile],
@@ -262,18 +262,27 @@ class PaymentController extends Controller
             
             Session::forget(['auth_mobile', 'otp_mobile', 'twofactor_sid', 'auth_name', 'auth_email', 'otp_last_sent_at']);
             
-            // Check if user came from cart checkout
+            // Check if user came from a specific page (e.g., booking service)
             $redirectTo = Session::get('redirect_after_login');
             Session::forget('redirect_after_login');
             
-            if ($redirectTo === 'payment') {
-                return redirect()->route('payment.page');
-            }
-            if ($redirectTo === 'cart') {
-                return redirect()->route('cart');
+            if ($redirectTo) {
+                if (str_starts_with($redirectTo, 'http://') || str_starts_with($redirectTo, 'https://') || str_starts_with($redirectTo, '/')) {
+                    return redirect($redirectTo)->with('success', 'Logged in successfully! You may now proceed with your booking.');
+                }
+                if ($redirectTo === 'payment') {
+                    return redirect()->route('payment.page');
+                }
+                if ($redirectTo === 'cart') {
+                    return redirect()->route('cart');
+                }
+                if (\Illuminate\Support\Facades\Route::has($redirectTo)) {
+                    return redirect()->route($redirectTo)->with('success', 'Logged in successfully!');
+                }
             }
             
-            return redirect()->route('home');
+            // Workflow: After login, customer proceeds to book services
+            return redirect()->route('service')->with('success', 'Logged in successfully! Please select a service to book.');
         } else {
             return back()->withErrors(['otp' => 'Invalid OTP.']);
         }

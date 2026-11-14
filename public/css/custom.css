@@ -1,596 +1,1151 @@
-.footer-row2 .navbar-brand img{
-    height:100px !important
+/* ==========================================================================
+   ANGELHUG - LOGO MATCHED HEALTHCARE & HOME NURSING DESIGN SYSTEM
+   Brand Colors extracted directly from Angelhug Logo:
+   - Emerald Green: #048444 (Logo Text & Base Swirl)
+   - Turquoise Cyan: #00bbd7 (Logo Upper Swirl)
+   - Lime Green: #95ca57 (Logo Middle Swirl)
+   - Leaf Green: #3a9f48 (Logo Inner Swirl)
+   - Deep Forest: #024724 (Contrast & Dark Gradients)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Angelhug Brand Identity */
+    --ah-primary: #048444;
+    --ah-primary-dark: #024724;
+    --ah-primary-deeper: #012b16;
+    --ah-primary-light: #0da357;
+    --ah-primary-soft: #e8f7ee;
+
+    /* Cyan / Turquoise Swirl Accent */
+    --ah-cyan: #00bbd7;
+    --ah-cyan-dark: #0099b0;
+    --ah-cyan-light: #38d3ea;
+    --ah-cyan-soft: #e0f8fa;
+    --ah-cyan-border: #b2ebf2;
+
+    /* Lime & Leaf Green Swirl Accents */
+    --ah-lime: #95ca57;
+    --ah-lime-light: #b4e87a;
+    --ah-lime-soft: #f4faee;
+    --ah-leaf: #3a9f48;
+    --ah-leaf-soft: #ebf7ed;
+
+    /* Functional Accents */
+    --ah-accent: #00bbd7;
+    --ah-accent-light: #38d3ea;
+    --ah-accent-soft: #e0f8fa;
+    --ah-gold: #f59e0b;
+
+    /* Neutrals */
+    --ah-slate-900: #0f172a;
+    --ah-slate-800: #1e293b;
+    --ah-slate-700: #334155;
+    --ah-slate-600: #475569;
+    --ah-slate-500: #64748b;
+    --ah-slate-100: #f1f5f9;
+    --ah-slate-50: #f8fafc;
+    --ah-border: #e2e8f0;
+
+    /* Gradients */
+    --ah-gradient-primary: linear-gradient(135deg, #048444 0%, #00bbd7 100%);
+    --ah-gradient-reverse: linear-gradient(135deg, #00bbd7 0%, #048444 100%);
+    --ah-gradient-dark: linear-gradient(180deg, #024724 0%, #012412 100%);
+    --ah-gradient-hero: linear-gradient(90deg, rgba(2, 43, 22, 0.92) 0%, rgba(4, 132, 68, 0.78) 55%, rgba(0, 187, 215, 0.45) 100%);
+
+    /* Shadows & Radii */
+    --ah-card-shadow: 0 10px 30px -5px rgba(4, 132, 68, 0.08), 0 4px 12px -2px rgba(0, 187, 215, 0.04);
+    --ah-hover-shadow: 0 20px 40px -8px rgba(4, 132, 68, 0.18), 0 8px 18px -4px rgba(0, 187, 215, 0.10);
+    --ah-radius-sm: 8px;
+    --ah-radius-md: 14px;
+    --ah-radius-lg: 20px;
+    --ah-radius-full: 9999px;
 }
 
-.text-justify{
-    text-align: justify;
-}
-.main-header{
-    background-color: #fff;
-}
-.nav-bg-b .custom-nav .nav-list li a.menu-links{
-    color:#050748
-}
-
-.ptb-30{
-    padding : 15px 0;
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    color: var(--ah-slate-600);
+    background-color: #ffffff;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.ptb-60{
-    padding : 30px 0;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    color: var(--ah-slate-900);
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
-/* Theme variables and modern overrides */
-:root{
-    --primary:#0b4f74; /* deep blue - main logo color */
-    --accent:#e8456d;  /* pink/coral accent */
-    --muted:#40505e;   /* body text */
-    --bg:#ffffff;
-    --soft:#eef6fb;
-    --radius:12px;
+a {
+    color: var(--ah-primary);
+    text-decoration: none !important;
+    transition: all 0.2s ease;
 }
 
-html,body{
-    font-family: 'Poppins', 'Open Sans', sans-serif;
-    color:var(--muted);
-    background-color:var(--bg);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
+a:hover {
+    color: var(--ah-cyan);
 }
 
-/* Headings use solid dark-blue (logo) color */
-h1,h2,h3,h4,h5,h6{
-    color:var(--primary);
-    font-weight:700;
+/* ==========================================================================
+   TOP BAR & NAVIGATION
+   ========================================================================== */
+
+.ah-topbar {
+    background: linear-gradient(90deg, #022b16 0%, #024724 60%, #048444 100%);
+    color: #ffffff;
+    font-size: 13.5px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Ensure logo text uses dark-blue color */
-.dsk-logo h2{
-    color:var(--primary) !important;
-    margin:0;
+.ah-topbar a {
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-size: 13.5px;
+    font-weight: 500;
 }
 
-/* Remove underline from logo text */
-.dsk-logo h2 {
-    text-decoration: none;
+.ah-topbar a:hover {
+    color: var(--ah-cyan-light) !important;
 }
 
-/* Navigation links */
-.menu-links, nav a{
-    color:var(--primary);
-    font-weight:600;
-    transition: color .18s ease, transform .12s ease;
-}
-.menu-links:hover, nav a:hover{ color:var(--accent); transform:translateY(-1px); }
-
-/* Buttons and CTAs */
-.btn-br.bg-btn3, .btn-br.bg-btn3:visited{
-    background: linear-gradient(90deg,var(--accent), #ff7a8a);
-    color:#fff;
-    border-radius:30px;
-    padding:10px 18px;
-    box-shadow: 0 6px 18px rgba(232,69,109,0.14);
-}
-.btn-br.bg-btn2{
-    background:var(--soft);
-    color:var(--accent);
-    border-radius:30px;
-    padding:10px 22px;
+.ah-topbar i {
+    color: var(--ah-cyan-light) !important;
+    margin-right: 6px;
 }
 
-/* Rounded pink CTA used in the page */
-.more-features-cta{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    padding:14px 36px;
-    border-radius:40px;
-    box-shadow: 0 8px 22px rgba(11,79,116,0.08);
-    font-weight:600;
+.ah-main-header {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(4, 132, 68, 0.1);
+    box-shadow: 0 4px 20px rgba(4, 132, 68, 0.06) !important;
+    transition: all 0.3s ease;
+    padding: 10px 0;
 }
 
-/* Cards and feature labels */
-.feature-label{
-    background:var(--primary);
-    color:#fff;
-    padding:14px 20px;
-    border-radius:10px;
-    display:inline-block;
-    font-weight:700;
+.ah-nav-link {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ah-slate-800) !important;
+    padding: 8px 16px !important;
+    border-radius: var(--ah-radius-sm);
+    transition: all 0.2s ease;
+    display: inline-block;
 }
 
-/* Small UI touches */
-.cart-count{
-    background:var(--accent);
-    color:#fff;
-    font-size:12px;
-    padding:2px 7px;
-    border-radius:12px;
-    position:relative;
-    top:-8px;
-    left:-8px;
+.ah-nav-link:hover, .ah-nav-link.active {
+    color: var(--ah-primary) !important;
+    background: var(--ah-primary-soft);
 }
 
-/* Make links and interactive elements more modern */
-a{ color:var(--primary); }
-a:hover{ color:var(--accent); }
-
-/* Responsive tweaks to keep the look consistent */
-@media (max-width: 991.98px){
-    .dsk-logo h2{ font-size:18px; }
+.ah-logo-img {
+    max-height: 52px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    transition: transform 0.25s ease;
 }
 
-/* Utility: subtle section separators */
-.section-divider{ border-top:1px solid rgba(11,79,116,0.06); margin-top:40px; margin-bottom:40px; }
-
-/* Preserve existing classes but improve contrast */
-.common-heading h2{ margin-bottom:18px; }
-
-/* Specific heading token used in templates */
-.text-second{ color: var(--primary) !important; font-weight:800; }
-
-/* Modern typography scale and consistent font sizing */
-html{ font-size:16px; }
-body{ font-size:16px; line-height:1.65; color:var(--muted); }
-p, li, a, input, button { font-size:16px; }
-
-/* Headings sizes (consistent across pages) */
-h1{ font-size:40px; }
-h2{ font-size:32px; }
-h3{ font-size:22px; }
-h4{ font-size:18px; }
-
-/* Section headings */
-.common-heading h2, .section-title, .journey-title{ color:var(--primary); font-weight:700; }
-
-/* Hero slide typography (keeps white text readable over overlay) */
-.slide-title h3{ font-size:36px; color:#ffffff; font-weight:800; text-shadow: 0 8px 30px rgba(0,0,0,0.55); margin-bottom:18px; }
-.slide-text p{ font-size:18px; color:rgba(255,255,255,0.95); max-width:640px; }
-
-/* Buttons / CTA unify */
-.btn-main.bg-btn, .btn-main.bg-btn.lnk{
-    background: linear-gradient(90deg,var(--primary), #2b6a8e);
-    color:#fff !important;
-    padding:12px 26px;
-    border-radius:30px;
-    font-weight:700;
-    box-shadow: 0 12px 30px rgba(11,79,116,0.12);
-    transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
-}
-.btn-main.bg-btn:hover{ transform:translateY(-3px); box-shadow: 0 18px 36px rgba(11,79,116,0.14); opacity:0.98; }
-
-/* Ensure other CTAs follow the same size */
-.btn-br.bg-btn3, .btn-br.bg-btn2{ font-size:16px; padding:10px 18px; }
-
-/* Why section adjustments */
-.why-choose-section .why-icon{ color:var(--primary); }
-.why-choose-section .why-title{ font-size:18px; color:var(--primary); }
-
-/* Reviews and leader cards - consistent text sizes */
-.review-card, .leader-card{ font-size:16px; }
-.review-info h6, .leader-card h5{ font-size:16px; font-weight:700; }
-
-/* Make images scale nicely */
-img{ max-width:100%; height:auto; }
-
-/* Premium image treatment across the public site */
-img {
-    image-rendering: auto;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+.ah-logo-img:hover {
+    transform: scale(1.03);
 }
 
-.funfact,
-.team-img-wrap,
-.contact-popup-image,
-.course-card,
-.service-card-app,
-.leader-card,
-.logo-box {
+/* ==========================================================================
+   BUTTONS & BADGES (LOGO MATCHED)
+   ========================================================================== */
+
+.ah-btn-primary {
+    background: var(--ah-gradient-primary);
+    color: #ffffff !important;
+    border: none;
+    padding: 11px 24px;
+    font-size: 14.5px;
+    font-weight: 700;
+    border-radius: var(--ah-radius-sm);
+    box-shadow: 0 4px 15px rgba(4, 132, 68, 0.28);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ah-btn-primary:hover {
+    background: var(--ah-gradient-reverse);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 187, 215, 0.35);
+    color: #ffffff !important;
+}
+
+.ah-btn-primary:active {
+    transform: translateY(0);
+}
+
+.ah-btn-success {
+    background: linear-gradient(135deg, #048444 0%, #3a9f48 100%);
+    color: #ffffff !important;
+    border: none;
+    padding: 11px 24px;
+    font-size: 14.5px;
+    font-weight: 700;
+    border-radius: var(--ah-radius-sm);
+    box-shadow: 0 4px 14px rgba(4, 132, 68, 0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+
+.ah-btn-success:hover {
+    background: linear-gradient(135deg, #024724 0%, #048444 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(4, 132, 68, 0.35);
+    color: #ffffff !important;
+}
+
+.ah-btn-outline {
+    background: transparent;
+    color: var(--ah-primary) !important;
+    border: 2px solid var(--ah-primary);
+    padding: 9px 22px;
+    font-size: 14.5px;
+    font-weight: 700;
+    border-radius: var(--ah-radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+
+.ah-btn-outline:hover {
+    background: var(--ah-primary);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(4, 132, 68, 0.22);
+}
+
+.ah-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--ah-radius-full);
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: var(--ah-primary-soft);
+    color: var(--ah-primary);
+    margin-bottom: 12px;
+    border: 1px solid rgba(4, 132, 68, 0.15);
+}
+
+.ah-badge-accent {
+    background: var(--ah-cyan-soft);
+    color: var(--ah-cyan-dark);
+    border-color: rgba(0, 187, 215, 0.2);
+}
+
+.ah-badge-lime {
+    background: var(--ah-lime-soft);
+    color: var(--ah-leaf);
+    border-color: rgba(149, 202, 87, 0.3);
+}
+
+/* ==========================================================================
+   SERVICE & FEATURE CARDS
+   ========================================================================== */
+
+.ah-service-card {
+    background: #ffffff;
+    border-radius: var(--ah-radius-lg);
+    border: 1px solid var(--ah-border);
+    box-shadow: var(--ah-card-shadow);
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ah-service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--ah-hover-shadow);
+    border-color: rgba(4, 132, 68, 0.3);
+}
+
+.ah-service-img-wrapper {
+    position: relative;
+    height: 230px;
     overflow: hidden;
 }
 
-.funfact img,
-.team-img,
-.popup-img,
-.contact-popup-image img,
-.course-card img,
-.service-card-app img,
-.leader-img,
-.cart-items img,
-.order-items img,
-.table img,
-.my-orders img,
-.product-image img {
-    display: block;
+.ah-service-img-wrapper img {
     width: 100%;
-    height: auto;
-    transform: translateZ(0);
-    filter: contrast(1.04) saturate(1.06);
-}
-
-.funfact img,
-.team-img,
-.contact-popup-image img,
-.course-card img,
-.service-card-app img,
-.leader-img {
-    border-radius: 18px;
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-}
-
-.funfact img,
-.team-img,
-.contact-popup-image img,
-.course-card img,
-.service-card-app img {
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-.leader-img {
-    width: 100%;
-    max-width: 220px;
-    aspect-ratio: 1 / 1;
-    margin: 0 auto 18px;
-    object-fit: cover !important;
-    object-position: center top;
-    border: 4px solid #ffffff;
-    box-shadow: 0 20px 46px rgba(11, 79, 116, 0.16);
+.ah-service-card:hover .ah-service-img-wrapper img {
+    transform: scale(1.06);
 }
 
-.team-img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: center top;
+.ah-service-price-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--ah-gradient-primary);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: var(--ah-radius-full);
+    font-weight: 800;
+    font-size: 13.5px;
+    box-shadow: 0 4px 14px rgba(4, 132, 68, 0.35);
+    z-index: 2;
 }
 
-.course-card img,
-.service-card-app img {
-    transition: transform 0.35s ease, filter 0.35s ease;
+.ah-service-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.course-card:hover img,
-.service-card-app:hover img,
-.funfact:hover img {
-    transform: scale(1.03);
-    filter: contrast(1.06) saturate(1.08);
+.ah-service-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ah-slate-900);
+    margin-bottom: 8px;
+    line-height: 1.35;
+    min-height: 52px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.logo-box {
-    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-    border: 1px solid rgba(11, 79, 116, 0.08);
-    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+.ah-service-desc {
+    color: var(--ah-slate-600);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    min-height: 45px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
 }
 
-.logo-box img {
-    max-width: 140px;
-    max-height: 64px;
-    object-fit: contain;
-    filter: contrast(1.05) saturate(1.02);
-}
-
-/* Small breakpoints */
-@media (max-width: 767.98px){
-    h1{ font-size:32px; }
-    h2{ font-size:24px; }
-    .slide-title h3{ font-size:26px; }
-    .slide-text p{ font-size:16px; }
-
-    .leader-img {
-        max-width: 180px;
-        border-radius: 16px;
-    }
-
-    .funfact img,
-    .team-img,
-    .contact-popup-image img,
-    .course-card img,
-    .service-card-app img {
-        border-radius: 14px;
-    }
-}
-
-/* Enhanced styles for About page */
-.about-sec-app {
-    background-color: var(--soft); /* Match the background of 'Why Choose Us' section */
-    border-radius: var(--radius);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 60px;
-}
-
-.about-sec-app h2 {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: var(--primary);
-    text-transform: uppercase;
-}
-
-.about-sec-app .history-item {
+.ah-service-meta {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #fff;
-    border-radius: var(--radius);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--ah-slate-500);
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--ah-border);
 }
 
-.about-sec-app .history-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* ==========================================================================
+   STATS & HIGHLIGHT STRIP (LOGO MATCHED)
+   ========================================================================== */
+
+.ah-stats-ribbon {
+    background: #ffffff;
+    border-radius: var(--ah-radius-lg);
+    box-shadow: 0 20px 45px -10px rgba(4, 132, 68, 0.14);
+    border: 1px solid rgba(4, 132, 68, 0.12);
+    padding: 28px 24px;
+    margin: 36px auto 0;
+    position: static;
 }
 
-.about-sec-app .history-icon {
-    font-size: 2rem;
-    color: var(--accent);
-    margin-right: 15px;
+.ah-stat-item {
+    text-align: center;
+    padding: 8px 16px;
 }
 
-.about-sec-app p {
-    font-size: 1rem;
-    color: var(--muted);
-    line-height: 1.6;
+.ah-stat-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--ah-primary);
+    line-height: 1.1;
+    margin-bottom: 4px;
 }
 
-.about-sec-app .funfact img {
-    max-height: 400px;
-    object-fit: cover;
-    margin: auto;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.ah-stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ah-slate-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-@media (max-width: 767.98px) {
-    /* General adjustments for mobile */
-    body {
-        font-size: 14px;
-        line-height: 1.5;
+@media (max-width: 575.98px) {
+    .ah-stats-ribbon {
+        margin-top: 20px;
+        padding: 16px 10px;
     }
 
-    /* Adjust section paddings for smaller screens */
-    .ptb-30 {
-        padding: 15px 0;
+    .ah-stats-ribbon .row {
+        --bs-gutter-x: 8px;
+        --bs-gutter-y: 10px;
     }
 
-    .ptb-60 {
-        padding: 30px 0;
+    .ah-stat-item {
+        padding: 6px 3px;
     }
 
-    /* Headings */
-    h1 {
-        font-size: 28px;
+    .ah-stat-number {
+        font-size: 22px;
     }
 
-    h2 {
-        font-size: 24px;
-    }
-
-    h3 {
-        font-size: 20px;
-    }
-
-    h4 {
+    .ah-stat-number i {
+        margin-right: 4px !important;
         font-size: 16px;
     }
 
-    /* Navigation */
-    .menu-links, nav a {
-        font-size: 14px;
-    }
-
-    /* Cards */
-    .course-card, .service-card-app, .review-card {
-        margin-bottom: 20px;
-        padding: 15px;
-    }
-
-    /* Grid adjustments */
-    .course-grid, .why-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    /* Images */
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* Buttons */
-    .btn-main.bg-btn, .btn-br.bg-btn3, .btn-br.bg-btn2 {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    /* Footer */
-    .footer-row2 .navbar-brand img {
-        height: 100px !important;
-    }
-
-    /* Adjust section margins */
-    .about-sec-app {
-        padding: 30px 15px;
-    }
-
-    .why-choose-section {
-        padding: 30px 15px;
-    }
-
-    .service-section-app {
-        padding: 30px 15px;
+    .ah-stat-label {
+        font-size: 9px;
+        line-height: 1.35;
+        letter-spacing: 0.2px;
     }
 }
-@media (max-width:768px){
 
-/* header container */
-.menu-header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
+/* ==========================================================================
+   FEATURE ICONS & BOXES
+   ========================================================================== */
 
-/* logo size */
-.dsk-logo h2{
-font-size:18px !important;
-line-height:1.2;
-font-weight:700;
-}
-
-/* move buttons right */
-.right-end-btn{
-margin-left:auto;
-display:flex;
-align-items:center;
-gap:8px;
+.ah-feature-card {
+    background: #ffffff;
+    border-radius: var(--ah-radius-md);
+    padding: 28px 24px;
+    border: 1px solid var(--ah-border);
+    box-shadow: var(--ah-card-shadow);
+    transition: all 0.3s ease;
+    height: 100%;
 }
 
-/* call button */
-.right-end-btn .btn-round-{
-width:40px;
-height:40px;
+.ah-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--ah-hover-shadow);
+    border-color: rgba(4, 132, 68, 0.25);
 }
 
-/* hamburger menu */
-.navm- .toggle{
-margin-left:5px;
+.ah-feature-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: var(--ah-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 18px;
+    background: var(--ah-primary-soft);
+    color: var(--ah-primary);
+    transition: all 0.3s ease;
 }
 
-/* Force hamburger bars to be black */
-.navm- .toggle span,
-.navm- .toggle span::before,
-.navm- .toggle span::after {
-    background: #000 !important;
+.ah-feature-card:hover .ah-feature-icon {
+    background: var(--ah-gradient-primary);
+    color: #ffffff;
+    transform: scale(1.08);
 }
+
+/* ==========================================================================
+   SECTION HEADINGS & UTILITIES
+   ========================================================================== */
+
+.ah-section-title {
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 800;
+    color: var(--ah-slate-900);
+    line-height: 1.25;
+    margin-bottom: 12px;
 }
-/* Fixed header styling */
+
+.ah-section-subtitle {
+    font-size: 16px;
+    color: var(--ah-slate-600);
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.ah-gradient-bg {
+    background: var(--ah-gradient-hero);
+    color: #ffffff;
+}
+
+.ah-light-bg {
+    background: #f8fafc;
+}
+
+/* ==========================================================================
+   GLOBAL BOOTSTRAP OVERRIDES (MATCHING ANGELHUG LOGO PALETTE)
+   ========================================================================== */
+.text-primary {
+    color: var(--ah-primary) !important;
+}
+
+.bg-primary {
+    background-color: var(--ah-primary) !important;
+}
+
+.border-primary {
+    border-color: var(--ah-primary) !important;
+}
+
+.btn-primary {
+    background: var(--ah-gradient-primary) !important;
+    border-color: var(--ah-primary) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(4, 132, 68, 0.25) !important;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background: var(--ah-gradient-reverse) !important;
+    border-color: var(--ah-cyan) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 22px rgba(0, 187, 215, 0.35) !important;
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    color: var(--ah-primary) !important;
+    border-color: var(--ah-primary) !important;
+    background: transparent !important;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
+    background: var(--ah-primary) !important;
+    color: #ffffff !important;
+    border-color: var(--ah-primary) !important;
+    box-shadow: 0 6px 18px rgba(4, 132, 68, 0.25) !important;
+}
+
+.badge.bg-primary {
+    background-color: var(--ah-primary) !important;
+    color: #ffffff !important;
+}
+
+/* Form focus ring matching logo emerald */
+.form-control:focus, .form-select:focus {
+    border-color: var(--ah-primary) !important;
+    box-shadow: 0 0 0 0.25rem rgba(4, 132, 68, 0.18) !important;
+}
+
+/* Swiper navigation active states */
+.swiper-pagination-bullet-active {
+    background: var(--ah-primary) !important;
+    width: 28px !important;
+    border-radius: 6px !important;
+}
+
+.swiper-pagination-bullet {
+    background: #ffffff;
+    opacity: 0.8;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    background: var(--ah-primary) !important;
+}
+
+/* Testimonial rating stars */
+.star-rating i {
+    color: #f59e0b;
+}
+
+/* Offcanvas mobile menu styling */
+.niwaxofcanvas {
+    border-left: 3px solid var(--ah-primary) !important;
+}
+
+.getintouchblock h4 {
+    color: var(--ah-primary) !important;
+}
+
+.social-media-linkz a {
+    background: var(--ah-primary-soft) !important;
+    color: var(--ah-primary) !important;
+    border: 1px solid rgba(4, 132, 68, 0.15) !important;
+}
+
+.social-media-linkz a:hover {
+    background: var(--ah-gradient-primary) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+}
+
+/* ==========================================================================
+   HEADER LOGO & NAVIGATION VISIBILITY (CRITICAL OVERRIDES)
+   ========================================================================== */
 .main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
+    background: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(4, 132, 68, 0.08) !important;
+    min-height: 90px !important;
+    padding: 6px 0 !important;
+    z-index: 99999 !important;
 }
 
+.ah-header-logo {
+    height: 86px !important;
+    max-height: 94px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+}
 
-/* Adjustments for mobile */
-@media (max-width: 767.98px) {
+.menu-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    min-height: 90px !important;
+    gap: 20px !important;
+}
+
+/* Force menus to be ALWAYS VISIBLE, BOLD & DARK on desktop and laptops */
+@media (min-width: 900px) {
+    body {
+        padding-top: 130px !important;
+    }
+
+    .main-header.fixed-top {
+        top: 40px !important;
+    }
+
+    .custom-nav {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 24px !important;
+        flex: 1 1 auto !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .custom-nav > .nav-list.ah-desktop-nav,
+    .custom-nav ul.ah-desktop-nav,
+    .custom-nav .nav-list:not(.right-end-btn) {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .custom-nav ul.ah-desktop-nav li,
+    .custom-nav .nav-list:not(.right-end-btn) li {
+        display: inline-block !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .custom-nav ul.ah-desktop-nav li a.menu-links,
+    .custom-nav .nav-list:not(.right-end-btn) li a.menu-links,
+    .main-header .custom-nav .nav-list li a.menu-links,
+    .main-header.sticky .custom-nav .nav-list li a.menu-links {
+        color: #0f172a !important;
+        font-size: 16.5px !important;
+        font-weight: 700 !important;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        padding: 10px 18px !important;
+        line-height: 1.4 !important;
+        border-radius: 10px !important;
+        text-decoration: none !important;
+        text-transform: none !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .custom-nav ul.ah-desktop-nav li a.menu-links:hover,
+    .custom-nav ul.ah-desktop-nav li a.menu-links.active,
+    .main-header .custom-nav .nav-list li a.menu-links:hover,
+    .main-header .custom-nav .nav-list li a.menu-links.active {
+        color: #048444 !important;
+        background: #e8f7ee !important;
+        transform: translateY(-1px) !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    body {
+        padding-top: 115px !important;
+    }
+
     .main-header {
-        padding: 15px 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        top: 50px !important;
     }
 
-    .dsk-logo img {
-        height: 60px; /* Slightly larger logo */
+    .ah-header-logo {
+        height: 62px !important;
+        max-height: 68px !important;
     }
 
-    .menu-links, .call-button {
-        font-size: 14px;
-    }
-
-    .call-button {
-        margin-right: 10px; /* Move call button slightly to the right */
-    }
-
-    .hamburger-menu {
-        margin-right: 15px; /* Move hamburger menu slightly to the right */
+    .custom-nav ul.ah-desktop-nav {
+        display: none !important;
     }
 }
-/* ================= MOBILE STYLE ONLY ================= */
 
-@media (max-width:768px){
-
-/* prevent horizontal scroll */
-body{
-overflow-x:hidden;
-padding-top:110px; /* space for fixed headers */
+/* =========================================================================
+   UNIVERSAL STANDARDIZED INNER PAGE HERO SECTIONS (Exact match to About Us)
+   ========================================================================= */
+.about-hero-section,
+.service-hero-area,
+.contact-hero-area,
+.booking-hero-section,
+.history-hero,
+.ah-hero-clean {
+    background: linear-gradient(135deg, #024724 0%, #048444 100%) !important;
+    padding: 75px 0 65px 0 !important;
+    color: #ffffff !important;
+    position: relative !important;
+    overflow: hidden !important;
 }
 
-/* TOP HEADER */
-.top-header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-background:#0b4f74;
-color:#fff;
-padding:8px 0;
-font-size:14px;
-z-index:10000;
+.about-hero-section::before,
+.service-hero-area::before,
+.contact-hero-area::before,
+.booking-hero-section::before,
+.history-hero::before,
+.ah-hero-clean::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("../img/angelhug_docx/image5.png") center/cover no-repeat;
+    opacity: 0.18;
 }
 
-/* MAIN HEADER BELOW TOP HEADER */
-.main-header{
-position:fixed !important;
-top:60px !important;
-left:0;
-width:100%;
-z-index:9999;
-background:#fff;
+.about-hero-section h1,
+.service-hero-area h1,
+.contact-hero-area h1,
+.booking-hero-section h1,
+.history-hero h1,
+.ah-hero-clean h1 {
+    font-size: clamp(28px, 3.2vw, 44px) !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    margin-bottom: 12px !important;
+    color: #ffffff !important;
 }
 
-/* stop hide animation on scroll */
-.main-header.hide,
-.main-header.up,
-.main-header.down{
-transform:none !important;
-top:60px !important;
-opacity:1 !important;
+.about-hero-section p.lead,
+.service-hero-area p.lead,
+.contact-hero-area p.lead,
+.booking-hero-section p.lead,
+.history-hero p.lead,
+.ah-hero-clean p.lead {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.82) !important;
+    max-width: 720px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 0 !important;
 }
 
-/* mobile header layout */
-.menu-header{
-display:flex;
-align-items:center;
-justify-content:flex-start;
-gap:10px;
-min-height:60px;
-padding:10px 0;
+/* Remove unwanted paragraph & heading margins inside cards */
+.contact-item-box h6,
+.contact-form-card h3,
+.summary-card h5,
+.summary-card h6,
+.booking-container h5 {
+    margin-top: 0 !important;
+    margin-bottom: 4px !important;
 }
 
-/* logo size */
-.dsk-logo{
-max-width:calc(100% - 60px);
+.contact-item-box p,
+.contact-form-card p,
+.summary-card p {
+    margin-top: 0 !important;
+    margin-bottom: 4px !important;
+    line-height: 1.4 !important;
 }
 
-.dsk-logo h2{
-font-size:18px !important;
-line-height:1.2 !important;
-white-space:normal !important;
-word-wrap:break-word;
+/* Global Typography Reset for Small Elements */
+small, .small {
+    margin-top: 0 !important;
 }
 
-/* top contact layout */
-.top-header-wrapper{
-flex-direction:column;
-text-align:center;
-gap:4px;
+/* Ensure badges are strictly inline-block and static throughout the application */
+.badge {
+    position: static !important;
+    display: inline-block !important;
+    font-size: 0.78em !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    vertical-align: baseline !important;
+    border-radius: 6px !important;
+    padding: 0.35em 0.65em !important;
+    top: auto !important;
+    left: auto !important;
 }
 
-.top-left a{
-display:block;
-margin:0;
-font-size:12px;
+/* Universal Grand Hero Banner (Matches About Us Hero Size) */
+.ah-grand-hero {
+    background: linear-gradient(135deg, #024724 0%, #048444 100%) !important;
+    padding: 75px 0 65px 0 !important;
+    color: #ffffff !important;
+    position: relative !important;
+    overflow: hidden !important;
 }
 
-/* button icons */
-.right-end-btn .btn-round-{
-width:42px !important;
-height:42px !important;
-min-width:42px !important;
+.ah-grand-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("../img/angelhug_docx/image5.png") center/cover no-repeat;
+    opacity: 0.18;
 }
 
+.ah-grand-hero h1 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    margin-bottom: 12px !important;
+    letter-spacing: -0.02em !important;
 }
 
-/* ICON COLOR */
-.top-left i{
-color:#ff69b4 !important;
-margin-right:6px;
+.ah-grand-hero p.lead {
+    font-size: 17px !important;
+    line-height: 1.65 !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+    max-width: 720px !important;
+}
+
+.feature-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 18px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(4px);
+}
+
+.contact-item-box {
+    margin-bottom: 12px !important;
+    padding-bottom: 12px !important;
+}
+
+/* =========================================================================
+   PERFECT STEP NUMBER & TITLE ALIGNMENT
+   ========================================================================= */
+.step-header-box,
+.booking-step-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 0 0 12px 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+}
+
+.step-header-box .step-badge,
+.step-header-box .booking-step-num,
+.booking-step-header .booking-step-num {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    max-width: 28px !important;
+    border-radius: 50% !important;
+    background: #048444 !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 13.5px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    position: static !important;
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: 0 2px 5px rgba(4, 132, 68, 0.25) !important;
+    flex-shrink: 0 !important;
+    vertical-align: middle !important;
+    transform: none !important;
+}
+
+.step-header-box .step-title,
+.step-header-box span.step-title,
+.step-header-box h5.step-title,
+.step-header-box h5,
+.booking-step-header .booking-step-title {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    line-height: 28px !important;
+    height: 28px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+}
+
+/* =========================================================================
+   BOOKING FORM INPUT GROUP & CONTROL ALIGNMENT
+   ========================================================================= */
+.booking-main-card .input-group {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    width: 100% !important;
+}
+
+.booking-main-card .input-group > .input-group-text {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.booking-main-card .input-group > .form-control {
+    flex: 1 1 auto !important;
+    width: 1% !important;
+    min-width: 0 !important;
+}
+
+.booking-main-card .input-group > #verifiedBadge,
+.booking-main-card .input-group > #btnSendOtp {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* =========================================================================
+   PERFECT HEADER & BRAND LOGO ALIGNMENT
+   ========================================================================= */
+.top-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    padding: 0 !important;
+    z-index: 100000 !important;
+    background: linear-gradient(90deg, #022b16 0%, #024724 50%, #048444 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.top-header .container,
+.top-header .top-header-wrapper {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.top-header .top-left a {
+    line-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+header.main-header,
+header.main-header.navfix,
+header.main-header.fixed-top,
+.ah-site-header {
+    position: fixed !important;
+    top: 40px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 84px !important;
+    min-height: 84px !important;
+    max-height: 84px !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(4, 132, 68, 0.08) !important;
+    z-index: 99999 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    transform: none !important;
+}
+
+.main-header .container-fluid,
+.main-header .container-fluid.m-pad {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.main-header .menu-header {
+    width: 100% !important;
+    height: 84px !important;
+    min-height: 84px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 16px !important;
+}
+
+.main-header .dsk-logo {
+    display: flex !important;
+    align-items: center !important;
+    float: none !important;
+    line-height: 1 !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+}
+
+.main-header .dsk-logo .nav-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    text-decoration: none !important;
+    line-height: 1 !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.main-header .ah-header-logo {
+    height: 56px !important;
+    max-height: 56px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.main-header .logo-brand-text {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+}
+
+.main-header .logo-brand-text .brand-name {
+    display: block !important;
+    color: #048444 !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.3px !important;
+    line-height: 1.15 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    margin: 0 0 3px 0 !important;
+    padding: 0 !important;
+}
+
+.main-header .logo-brand-text .brand-tagline {
+    display: block !important;
+    color: #00bbd7 !important;
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.main-header .custom-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    height: 100% !important;
+    margin: 0 0 0 auto !important;
+    gap: 16px !important;
+}
+
+.main-header .custom-nav .nav-list {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+body {
+    padding-top: 124px !important;
+}
+
+@media (max-width: 991.98px) {
+    .top-header {
+        height: 48px !important;
+        min-height: 48px !important;
+        line-height: normal !important;
+        padding: 2px 0 !important;
+    }
+    .top-header .top-left {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 1px !important;
+        width: 100% !important;
+        line-height: normal !important;
+    }
+    .top-header .top-left a {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        max-width: calc(100vw - 24px);
+        margin: 0 !important;
+        font-size: 12px !important;
+        line-height: 19px !important;
+        white-space: nowrap !important;
+    }
+    header.main-header,
+    header.main-header.navfix,
+    header.main-header.fixed-top,
+    .ah-site-header {
+        top: 48px !important;
+        height: 64px !important;
+        min-height: 64px !important;
+        max-height: 64px !important;
+    }
+    .main-header .menu-header {
+        height: 64px !important;
+        min-height: 64px !important;
+    }
+    .main-header .ah-header-logo {
+        height: 44px !important;
+        max-height: 44px !important;
+    }
+    .main-header .logo-brand-text .brand-name {
+        font-size: 17px !important;
+    }
+    .main-header .logo-brand-text .brand-tagline {
+        font-size: 9px !important;
+        letter-spacing: 1px !important;
+    }
+    body {
+        padding-top: 112px !important;
+    }
 }

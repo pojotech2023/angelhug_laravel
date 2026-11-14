@@ -118,7 +118,7 @@ background-repeat:no-repeat;">
 /* Section Title */
 .section-title {
     font-size: 2.5rem;
-    color: #0b4f74;
+    color: #048444;
     margin-bottom: 40px;
     font-weight: 700;
     text-transform: uppercase;
@@ -201,7 +201,7 @@ background-repeat:no-repeat;">
 
 /* Buttons */
 .btn-primary {
-    background-color: #0b4f74;
+    background-color: #048444;
     border: none;
     color: #fff;
     border-radius: 25px;
@@ -235,7 +235,7 @@ background-repeat:no-repeat;">
     font-weight: 700;
     
     margin-bottom: 15px;
-    color: #0b4f74 !important; /* Apply dark blue color */
+    color: #048444 !important; /* Apply dark blue color */
 }
 .list-title::after {
     content: '';
@@ -297,13 +297,13 @@ function closePopup() {
 <section class="extra-course-list">
     <div class="container">
 
-        <h3 class="list-title text-primary" style="text-color: #0b4f74">Our Course List</h3>
+        <h3 class="list-title text-primary" style="text-color: #048444">Our Course List</h3>
         <ul class="course-list">
             <li class="text-primary">ADVANCE MEDICAL CODING (AMC)</li>
             <li class="text-primary">CERTIFIED PROFESSIONAL CODER (CPC)</li>
         </ul>
 
-        <h3 class="list-title mt-4 text-primary" style="text-color: #0b4f74">Certifications We Provide</h3>
+        <h3 class="list-title mt-4 text-primary" style="text-color: #048444">Certifications We Provide</h3>
         <ul class="course-list">
             <li class="text-primary">CPC - Certified Professional Coder</li>
             <li class="text-primary">COC - Certified Out-Patient Coder</li>

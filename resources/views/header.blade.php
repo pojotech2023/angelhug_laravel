@@ -1,9 +1,15 @@
+@php
+    $siteBrandName = \App\Models\Setting::get('brand_name', 'Angelhug');
+    $siteBrandTagline = \App\Models\Setting::get('brand_tagline', 'Healthcare Services');
+    $siteCustomLogo = \App\Models\Setting::get('website_logo');
+    $siteLogoUrl = $siteCustomLogo ? asset('storage/' . $siteCustomLogo) : asset('Angelhug Logo/FullLogo_Transparent_NoBuffer.png');
+@endphp
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
 <head>
 	<meta charset="utf-8" />
-	<title>PojoCoursePilot</title>
+	<title>{{ $siteBrandName }} - Professional Healthcare & Nursing Services</title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 
@@ -13,9 +19,9 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-	<link rel="icon" type="image/jpeg" href="{{ asset('img/logo (2).png') }}">
-	<link rel="shortcut icon" href="{{ asset('img/logo (2).png') }}">
-	<link rel="apple-touch-icon" href="{{ asset('img/logo (2).png') }}">
+	<link rel="icon" type="image/png" href="{{ $siteLogoUrl }}">
+	<link rel="shortcut icon" href="{{ $siteLogoUrl }}">
+	<link rel="apple-touch-icon" href="{{ $siteLogoUrl }}">
 	<link href="{{ asset('css/swiper.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
 	<link href="{{ asset('css/plugin.min.css')}}" rel="stylesheet">
@@ -28,7 +34,7 @@
 	<link href="{{ asset('css/style.css')}}" rel="stylesheet">
 	<link href="{{ asset('css/responsive.css')}}" rel="stylesheet">
 	<link href="{{ asset('css/darkmode.css')}}" rel="stylesheet">
-	<link href="{{ asset('css/custom.css')}}" rel="stylesheet">
+	<link href="{{ asset('css/custom.css') }}?v={{ file_exists(public_path('css/custom.css')) ? filemtime(public_path('css/custom.css')) : time() }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	<style>
@@ -40,7 +46,7 @@
 
 			header.main-header.navfix.fixed-top {
 				position: fixed !important;
-				top: 0;
+				top: 40px !important;
 				left: 0;
 				right: 0;
 				width: 100%;
@@ -277,7 +283,7 @@
 		@media (min-width: 992px) {
 			header.main-header.navfix.fixed-top {
 				position: fixed;
-				top: 0;
+				top: 40px !important;
 				left: 0;
 				right: 0;
 				z-index: 9999;
@@ -286,7 +292,7 @@
 			}
 
 			body {
-				padding-top: 0px; /* Increased padding to create a larger gap between the header and hero section */
+				padding-top: 130px !important;
 			}
 		}
 
@@ -318,38 +324,85 @@
        padding-top:70px;
    } */
 
-/* Desktop header stability */
+/* Desktop header stability & Brand Logo Alignment */
+.ah-site-header {
+    height: 84px !important;
+    min-height: 84px !important;
+}
+
 .menu-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 84px !important;
+    min-height: 84px !important;
+    gap: 18px !important;
+    padding: 0 !important;
 }
 
 .dsk-logo {
-    flex: 0 1 420px;
-    min-width: 0;
+    display: flex !important;
+    align-items: center !important;
+    float: none !important;
+    line-height: 1 !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
 }
 
 .dsk-logo .nav-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    text-decoration: none !important;
+    line-height: 1 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.ah-header-logo {
+    height: 56px !important;
+    max-height: 56px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 !important;
+}
+
+.logo-brand-text {
     display: flex !important;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
+    flex-direction: column !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
 }
 
-.dsk-logo .logo-text {
-    font-size: clamp(16px, 1.55vw, 24px) !important;
-    line-height: 1.08 !important;
-    white-space: normal;
+.logo-brand-text .brand-name {
+    display: block !important;
+    color: #048444 !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.3px !important;
+    line-height: 1.15 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    margin: 0 0 2px 0 !important;
+    padding: 0 !important;
 }
 
-.logo-text .desktop-logo-lines {
-    display: inline;
-}
-
-.logo-text .mobile-logo-lines {
-    display: none;
+.logo-brand-text .brand-tagline {
+    display: block !important;
+    color: #00bbd7 !important;
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .custom-nav {
@@ -405,7 +458,7 @@
 
 .nav-action-btn:hover,
 .nav-action-btn:focus {
-    color: #0b4f74;
+    color: #048444;
     border-color: #b9cde0;
     background: #f8fbff;
     transform: translateY(-1px);
@@ -418,8 +471,8 @@
 }
 
 .nav-action-btn.nav-action-primary {
-    background: linear-gradient(135deg, #0b4f74 0%, #146c94 100%);
-    border-color: #0b4f74;
+    background: linear-gradient(135deg, #048444 0%, #00bbd7 100%);
+    border-color: #048444;
     color: #ffffff;
     box-shadow: 0 12px 26px rgba(11, 79, 116, 0.22);
 }
@@ -427,8 +480,8 @@
 .nav-action-btn.nav-action-primary:hover,
 .nav-action-btn.nav-action-primary:focus {
     color: #ffffff;
-    background: linear-gradient(135deg, #094261 0%, #105b7c 100%);
-    border-color: #094261;
+    background: linear-gradient(135deg, #024724 0%, #048444 100%);
+    border-color: #024724;
 }
 
 .cart-icon {
@@ -449,7 +502,7 @@
 
 .cart-icon:hover,
 .cart-icon:focus {
-    color: #0b4f74;
+    color: #048444;
     border-color: #b9cde0;
     background: #f8fbff;
     transform: translateY(-1px);
@@ -635,7 +688,7 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-background:#0b4f74;
+background: linear-gradient(90deg, #022b16 0%, #024724 50%, #048444 100%) !important;
 color:#fff;
 padding:8px 0;
 font-size:14px;
@@ -659,7 +712,7 @@ margin-right:6px;
 }
 
 .top-left a:hover{
-color:#d1e7ff;
+color:#38d3ea;
 }
 
 /* move main header below top header */
@@ -699,7 +752,7 @@ top:60px !important;
 	}
 }
 body{
-padding-top:120px;
+padding-top:115px;
 }
 
 }
@@ -708,7 +761,7 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-background:#0b4f74;
+background: linear-gradient(90deg, #022b16 0%, #024724 50%, #048444 100%) !important;
 color:#fff;
 padding:8px 0;
 font-size:14px;
@@ -732,11 +785,11 @@ font-weight:500;
 /* ICON COLOR FIX */
 .top-left i{
 margin-right:6px;
-color:#ff69b4 !important;   /* force pink instead of white */
+color:#00bbd7 !important;   /* Angelhug Logo cyan */
 }
 
 .top-left a:hover{
-color:#d1e7ff;
+color:#38d3ea;
 }
 
 /* FORCE MOBILE HEADER VISIBLE ON SCROLL */
@@ -771,7 +824,7 @@ color:#d1e7ff;
     }
 
     body {
-        padding-top: 160px !important;
+        padding-top: 115px !important;
     }
 }
 
@@ -790,6 +843,51 @@ color:#d1e7ff;
 
     .dsk-logo .logo-text .mobile-logo-lines {
         display: inline !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-header {
+        padding: 2px 0 !important;
+    }
+
+    .top-header-wrapper,
+    .top-left {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 2px !important;
+        width: 100%;
+    }
+
+    .top-left a {
+        display: block !important;
+        margin: 0 !important;
+        font-size: 12px !important;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    header.main-header,
+    header.main-header.navfix,
+    header.main-header.navfix.fixed-top,
+    header.main-header.navfix.fixed-top.sticky,
+    header.main-header.navfix.hide,
+    header.main-header.navfix.up,
+    header.main-header.navfix.down,
+    .navfix,
+    .navfix.hide,
+    .navfix.up,
+    .navfix.down,
+    .main-header,
+    .main-header.hide,
+    .main-header.up,
+    .main-header.down {
+        top: 48px !important;
+    }
+
+    body {
+        padding-top: 120px !important;
     }
 }
 
@@ -824,66 +922,48 @@ color:#d1e7ff;
         <div class="top-header-wrapper">
 
             <div class="top-left">
-                <a href="tel:+918072515050">
-                    <i class="fas fa-phone"></i> +91 8072515050
+                @php
+                    $hdrPhone = \App\Models\Setting::get('contact_phone', '+91 8072515050');
+                    $hdrEmail = \App\Models\Setting::get('contact_email', 'angelhug.official@gmail.com');
+                @endphp
+                <a href="tel:{{ preg_replace('/[^0-9+]/', '', $hdrPhone) }}">
+                    <i class="fas fa-phone"></i> {{ $hdrPhone }}
                 </a>
 
-               
-
-                <a href="mailto:services@pojotechnology.com">
-                    <i class="fas fa-envelope"></i> services@pojotechnology.com
+                <a href="mailto:{{ $hdrEmail }}">
+                    <i class="fas fa-envelope"></i> {{ $hdrEmail }}
                 </a>
             </div>
 
         </div>
     </div>
 </div>
-	<header class="header-pr nav-bg-b main-header navfix fixed-top menu-white" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-		<div class="container-fluid m-pad">
+	<header class="header-pr main-header navfix fixed-top ah-site-header">
+		<div class="container-fluid m-pad px-lg-4">
 			<div class="menu-header">
 				<div class="dsk-logo">
-    <a class="nav-brand" href="{{route('home')}}" style="text-decoration:none; display:flex; align-items:center; gap:14px;">
-        <img src="{{ asset('img/logo (2).png') }}" alt="PojoCoursePilot Logo" style="max-height:100px; width:auto; display:block;" />
-        <div class="logo-text" style="color:#0b4f74; font-weight:bold; font-size:32px; line-height:1.2;">
-            {{-- <span class="desktop-logo-lines">PojoCoursePilot</span>
-            <span class="mobile-logo-lines">PojoCoursePilot</span> --}}
-        </div>
-    </a>
-</div>
+                    <a class="nav-brand" href="{{route('home')}}">
+                        <img src="{{ $siteLogoUrl }}" alt="{{ $siteBrandName }} Logo" class="ah-header-logo" />
+                        <div class="logo-brand-text">
+                            <span class="brand-name">{{ $siteBrandName }}</span>
+                            <span class="brand-tagline">{{ $siteBrandTagline }}</span>
+                        </div>
+                    </a>
+                </div>
 				<div class="custom-nav" role="navigation">
-					<ul class="nav-list">
-						<li>
-							<a href="{{route('home')}}" class="menu-links">Home</a>
-
-						</li>
-						<li>
-							<a href="{{route('about')}}" class="menu-links">About</a>
-
-						</li>
-						<li>
-						<a href="{{ url('list/course') }}" class="menu-links">Course List</a>
-						</li>
-						<li>
-						<a href="{{route('contact')}}" class="menu-links">Contact Us</a>
-						</li>
-						
-					
-
+					<ul class="nav-list ah-desktop-nav">
+						<li><a href="{{route('home')}}" class="menu-links {{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
+						<li><a href="{{route('about')}}" class="menu-links {{ request()->routeIs('about') ? 'active' : '' }}">About Us</a></li>
+						<li><a href="{{route('service')}}" class="menu-links {{ request()->routeIs('service*') ? 'active' : '' }}">Services</a></li>
+						<li><a href="{{route('contact')}}" class="menu-links {{ request()->routeIs('contact') ? 'active' : '' }}">Contact Us</a></li>
 					</ul>
-
-						<ul class="nav-list right-end-btn">
-						<li class="hidemobile"><a href="{{ route('cart') }}" class="cart-icon">
-							<i class="fa fa-shopping-cart"></i>
-							<span class="cart-count">{{ $headerCartCount }}</span>
-						</a>
-	                   </li>
+					<ul class="nav-list right-end-btn">
 						@auth
-						<li class="hidemobile"><a href="{{ route('my.orders') }}" class="nav-action-btn"><i class="fas fa-box-open"></i>My Orders</a></li>
-						<li class="hidemobile"><a href="{{ route('logout') }}" class="nav-action-btn nav-action-primary"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+						<li class="hidemobile"><a href="{{ route('service.history') }}" class="nav-action-btn"><i class="fas fa-history me-1"></i>Service History</a></li>
+						<li class="hidemobile"><a href="{{ route('logout') }}" class="nav-action-btn nav-action-primary"><i class="fas fa-sign-out-alt me-1"></i>Logout</a></li>
 						@else
-						<li class="hidemobile"><a href="{{route('customer.login')}}" target="blank" class="nav-action-btn nav-action-primary">Login</a> </li>
+						<li class="hidemobile"><a href="{{route('customer.login')}}" class="nav-action-btn nav-action-primary"><i class="fas fa-user me-1"></i>Login</a></li>
 						@endauth
-
 						<li class="hidedesktop"><a data-bs-toggle="offcanvas" href="#offcanvasExample"
 								class="btn-round- btn-br bg-btn2" style="margin-right: 15px;">
 							<i class="fas fa-phone-alt"></i>
@@ -895,38 +975,17 @@ color:#d1e7ff;
 
 			<nav id="main-nav">
 				<ul class="first-nav">
-					<li>
-						<a href="{{route('home')}}">Home</a>
-
-					</li>
-					<li>
-						<a href="{{route('about')}}">About</a>
-					</li>
-					<li>
-						<a href="{{ url('list/course') }}">Course List</a>
-					</li>
-					<li>
-						<a href="{{route('contact')}}">Contact Us</a>
-					</li>
-					<li>
-						<a href="{{ route('cart') }}">Cart</a>
-					</li>
+					<li><a href="{{route('home')}}">Home</a></li>
+					<li><a href="{{route('about')}}">About Us</a></li>
+					<li><a href="{{route('service')}}">Services</a></li>
+					<li><a href="{{route('contact')}}">Contact Us</a></li>
 					@auth
-					<li>
-						<a href="{{ route('my.orders') }}">My Orders</a>
-					</li>
-					<li>
-						<a href="{{ route('logout') }}">Logout</a>
-					</li>
+					<li><a href="{{ route('service.history') }}">Service History</a></li>
+					<li><a href="{{ route('logout') }}">Logout</a></li>
 					@else
-					<li>
-									<a href="{{ route('customer.login') }}" class="nav-action-btn nav-action-primary">Login</a>
+					<li><a href="{{ route('customer.login') }}" class="nav-action-btn nav-action-primary">Login</a></li>
 					@endauth
-
-
-
 				</ul>
-
 			</nav>
 		</div>
 	</header>
@@ -939,46 +998,56 @@ color:#d1e7ff;
 						aria-label="Close"></button></div>
 			</div>
 
+			@php
+				$drawerPhone = \App\Models\Setting::get('contact_phone', '+91 8072515050');
+				$drawerEmail = \App\Models\Setting::get('contact_email', 'angelhug.official@gmail.com');
+				$drawerAddress = \App\Models\Setting::get('contact_address', 'No.25/25, Ottaipillaiyar Koil Street, Ranganathan Nagar, Virugambakkam, Chennai, Tamil Nadu-600092');
+				$drawerMapLink = \App\Models\Setting::get('google_map_directions_link', 'https://goo.gl/maps/U5MvBvajYsQmWqUR9');
+				$drawerFb = \App\Models\Setting::get('social_facebook', 'https://facebook.com/angelhug');
+				$drawerIg = \App\Models\Setting::get('social_instagram', 'https://instagram.com/angelhug');
+				$drawerYt = \App\Models\Setting::get('social_youtube', 'https://youtube.com/@angelhug');
+				$drawerTw = \App\Models\Setting::get('social_twitter');
+				$drawerLi = \App\Models\Setting::get('social_linkedin');
+			@endphp
 			<div class="getintouchblock mt30">
 				<h4>Get In Touch</h4>
 
 				<div class="media mt15">
-					<div class="icondive"><img src="images/icons/call.svg" alt="icon"></div>
+					<div class="icondive"><img src="{{ asset('images/icons/call.svg') }}" alt="icon"></div>
 					<div class="media-body getintouchinfo">
-						<a href="tel:+918072515050">+91 8072515050<span>Mon-Fri 9am - 6pm</span></a>
+						<a href="tel:{{ preg_replace('/[^0-9+]/', '', $drawerPhone) }}">{{ $drawerPhone }}<span>Available 24/7</span></a>
 					</div>
 				</div>
 				<div class="media mt15">
-					<div class="icondive"><img src="{{ asset('images/icons/whatsapp.svg')}}" alt="icon"></div>
+					<div class="icondive"><img src="{{ asset('images/icons/whatsapp.svg') }}" alt="icon"></div>
 					<div class="media-body getintouchinfo">
-						<a href="https://wa.me/+918072515050" target="_blank">+91 8072515050 <span>Mon-Fri 9am -
-								6pm</span></a>
+						<a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $drawerPhone) }}" target="_blank">{{ $drawerPhone }} <span>WhatsApp Care Chat</span></a>
 					</div>
 				</div>
 				<div class="media mt15">
-					<div class="icondive"><img src="{{ asset('images/icons/mail.svg')}}" alt="icon"></div>
+					<div class="icondive"><img src="{{ asset('images/icons/mail.svg') }}" alt="icon"></div>
 					<div class="media-body getintouchinfo">
-						<a href="mailto:services@pojotechnology.com" target="_blank">services@pojotechnology.com
+						<a href="mailto:{{ $drawerEmail }}" target="_blank">{{ $drawerEmail }}
 							<span>Online Support</span></a>
 					</div>
 				</div>
 				<div class="media mt15">
-					<div class="icondive"><img src="{{ asset('images/icons/map.svg')}}" alt="icon"></div>
+					<div class="icondive"><img src="{{ asset('images/icons/map.svg') }}" alt="icon"></div>
 					<div class="media-body getintouchinfo">
-						<a href="#">
-								No 77, Velachery main road, Near to Tata motors show room,<br>Rajakilpakkam, Tambaram, Chennai 600073<span>Visit Our Office</span></a>
+						<a href="{{ $drawerMapLink }}" target="_blank">
+							{{ $drawerAddress }}<span>Visit Our Office</span></a>
 					</div>
 				</div>
 			</div>
 			<div class="contact-data mt30">
 				<h4>Follow Us On:</h4>
 				<div class="social-media-linkz mt10">
-					<a href="https://www.facebook.com/kudsit" target="blank"><i class="fab fa-facebook"></i></a>
-					<a href="https://x.com/dukerala" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.instagram.com/accounts/suspended/?next=https%3A%2F%2Fwww.instagram.com%2Fdukerala%2F%3F__coig_ufac%3D1#" target="blank"><i class="fab fa-instagram"></i></a>
-					<a href="https://www.youtube.com/c/DigitalUniversityKerala" target="blank"><i class="fab fa-youtube"></i></a>
-					</div>
+					@if($drawerFb)<a href="{{ $drawerFb }}" target="_blank"><i class="fab fa-facebook"></i></a>@endif
+					@if($drawerTw)<a href="{{ $drawerTw }}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>@endif
+					@if($drawerIg)<a href="{{ $drawerIg }}" target="_blank"><i class="fab fa-instagram"></i></a>@endif
+					@if($drawerYt)<a href="{{ $drawerYt }}" target="_blank"><i class="fab fa-youtube"></i></a>@endif
+					@if($drawerLi)<a href="{{ $drawerLi }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>@endif
+				</div>
 			</div>
 		</div>
 	</div>
-

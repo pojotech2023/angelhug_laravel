@@ -1238,7 +1238,7 @@ a.play-video::after {
   font-size: 18px;
   line-height: 24px;
 }
-.small {
+.statistics-card.small {
   margin-top: 100px;
 }
 .in-stats .statistics {
@@ -1565,7 +1565,7 @@ a.play-video::after {
 }
 .modal-backdrop.show {
   opacity: 0.9;
-  z-index: 99999;
+  z-index: 99998;
 }
 .fdgn2 input,
 .fdgn2 select,
@@ -8515,7 +8515,7 @@ a.smllbtnn {
   height: 60px;
 }
 
-.step-badge {
+.hexagon-card .step-badge {
   display: inline-block;
   background: #93cf4d;
   color: #fff;
@@ -8833,7 +8833,7 @@ a.smllbtnn {
 }
 
 /* Badge */
-.badge {
+.course-card .badge {
     position: absolute;
     top: 12px;
     left: 12px;

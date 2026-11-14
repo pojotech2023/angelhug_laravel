@@ -4,28 +4,37 @@
     </IfModule>
 
     RewriteEngine On
-    
-    # Redirect to public folder
-    RewriteRule ^(.*)$ public/$1 [L]
-</IfModule>
 
-# Handle Authorization Header
-<IfModule mod_rewrite.c>
+    # 1. Security: Block direct access to hidden files (.env, .git, etc.)
+    <FilesMatch "^\.(env|git|editorconfig)">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+
+    # 2. Block direct web access to sensitive config & lock files
+    <FilesMatch "(composer\.json|composer\.lock|package\.json|phpunit\.xml|artisan)">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+
+    # 3. Handle Authorization Header for API & Token authentication
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-</IfModule>
 
-# Redirect trailing slashes to remove them if not a folder
-<IfModule mod_rewrite.c>
+    # 4. Redirect Trailing Slashes if not a folder
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
-</IfModule>
 
-# Send all requests to Laravel's index.php
-<IfModule mod_rewrite.c>
+    # 5. Route static assets and requests into public/ directory
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # 6. Fallback: If not handled by public/ rewrite, route to root index.php
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
 
+# Prevent directory indexing
+Options -Indexes

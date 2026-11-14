@@ -1,19 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PojoCoursePilot</title>
-    <link href="{{ asset('img/logo (2).png') }}" rel="icon">
-    <!-- Include Bootstrap CSS -->
+    <title>{{ \App\Models\Setting::get('brand_name', 'Angelhug') }} - Admin Login</title>
+    <link rel="icon" type="image/png" href="{{ asset('Angelhug Logo/FullLogo_Transparent_NoBuffer.png') }}">
+    <link rel="shortcut icon" href="{{ asset('Angelhug Logo/FullLogo_Transparent_NoBuffer.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('Angelhug Logo/FullLogo_Transparent_NoBuffer.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         body {
             background:
-                radial-gradient(circle at top, rgba(13, 110, 253, 0.08), transparent 32%),
-                linear-gradient(135deg, #f4f7fb 0%, #eef3f9 100%);
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                radial-gradient(circle at top, rgba(4, 132, 68, 0.15), transparent 35%),
+                linear-gradient(135deg, #f4faf6 0%, #eef8f3 100%);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
         }
 
         .login-shell {
@@ -23,17 +26,17 @@
 
         .login-card {
             width: 100%;
-            max-width: 420px;
-            padding: 32px;
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.96);
-            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+            max-width: 440px;
+            padding: 36px;
+            border: 1px solid rgba(4, 132, 68, 0.15);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 24px 60px rgba(4, 132, 68, 0.12);
         }
 
         .login-title {
-            font-weight: 700;
-            color: #0f172a;
+            font-weight: 800;
+            color: #048444;
             letter-spacing: -0.02em;
         }
 
@@ -51,37 +54,32 @@
             height: 50px;
             border-radius: 12px;
             border: 1px solid #dbe3ee;
-            padding: 0 14px;
+            padding: 0 16px;
             box-shadow: none;
         }
 
         .form-control:focus {
-            border-color: #0d6efd;
-            box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.12);
+            border-color: #048444;
+            box-shadow: 0 0 0 4px rgba(4, 132, 68, 0.14);
         }
 
         .login-btn {
             min-height: 52px;
             border: 0;
             border-radius: 12px;
-            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+            background: linear-gradient(135deg, #048444 0%, #00bbd7 100%);
             font-weight: 700;
             font-size: 1rem;
-            letter-spacing: 0.01em;
-            box-shadow: 0 14px 30px rgba(13, 110, 253, 0.24);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+            color: #fff;
+            box-shadow: 0 14px 30px rgba(4, 132, 68, 0.28);
+            transition: all 0.2s ease;
         }
 
-        .login-btn:hover,
-        .login-btn:focus {
-            transform: translateY(-1px);
-            box-shadow: 0 18px 34px rgba(13, 110, 253, 0.3);
-            filter: brightness(1.02);
-        }
-
-        .login-btn:active {
-            transform: translateY(0);
-            box-shadow: 0 10px 22px rgba(13, 110, 253, 0.22);
+        .login-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #024724 0%, #048444 100%);
+            box-shadow: 0 18px 34px rgba(4, 132, 68, 0.35);
+            color: #fff;
         }
     </style>
 </head>
@@ -89,38 +87,74 @@
 <body>
     <div class="login-shell d-flex justify-content-center align-items-center">
         <div class="login-card">
+            <div class="text-center mb-3">
+                <img src="{{ asset('Angelhug Logo/FullLogo_Transparent_NoBuffer.png') }}" alt="{{ \App\Models\Setting::get('brand_name', 'Angelhug') }}" style="height: 85px; max-height: 95px; width: auto;" class="mb-3">
+                <h3 class="login-title mb-1">{{ \App\Models\Setting::get('brand_name', 'Angelhug') }} Admin</h3>
+                <p class="login-subtitle">Sign in with administrator credentials</p>
+            </div>
+
             @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-circle me-1"></i> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
             @endif
-            <h3 class="login-title text-center mb-2">Login</h3>
-            <p class="login-subtitle text-center mb-4">Sign in to continue to your dashboard.</p>
+
+            @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-check-circle me-1"></i> {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            @endif
+
             <form action="{{ route('Sign_In') }}" method="POST">
                 @csrf
-                <!-- Email Input -->
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
-                </div>
+              <!-- Email Input -->
+<div class="mb-3">
+    <label for="email" class="form-label">Admin Email Address</label>
+    <input
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        placeholder="Enter admin email"
+        value=""
+        autocomplete="off"
+        required
+    >
+</div>
 
-                <!-- Password Input -->
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
-                </div>
+<!-- Password Input -->
+<div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+        placeholder="Enter password"
+        value=""
+        autocomplete="new-password"
+        required
+    >
+</div>
 
                 <!-- Submit Button -->
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-primary login-btn">Login</button>
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn login-btn">
+                        <i class="fas fa-sign-in-alt me-2"></i> Log In to Dashboard
+                    </button>
                 </div>
 
-                <!-- Optional Links -->
+                <div class="text-center mt-4">
+                    <a href="{{ route('home') }}" class="text-muted small text-decoration-none">
+                        <i class="fas fa-arrow-left me-1"></i> Return to Live Website
+                    </a>
+                </div>
             </form>
         </div>
     </div>
 
-    <!-- Include Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

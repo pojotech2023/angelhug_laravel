@@ -1,517 +1,384 @@
 @include('header')
-<style>
-/* Hero section overlay */
-.breadcrumb-area{
-position: relative;
-overflow: hidden;
-}
-
-/* White overlay */
-.breadcrumb-area::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background: rgba(255,255,255,0.45); /* adjust whiteness here */
-z-index:1;
-}
-
-/* Keep text above overlay */
-.breadcrumb-area .text-block{
-position: relative;
-z-index:2;
-}
-@media (max-width:768px){
-
-.breadcrumb-area{
-background-size: cover !important;
-background-position: center center !important;
-background-repeat: no-repeat !important;
-
-height: 10vh;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
-}
-/* reduce hero section height */
-.breadcrumb-area{
-padding: 20px 0 !important;
-height: auto;
-}
-
-/* move breadcrumb (Home • Course List) up */
-.bread-menu{
-margin-top: -25px;
-margin-bottom: 8px;
-
-}
-
-/* adjust title spacing */
-.bread-title h2{
-margin-top: 5px;
-font-size: 30px;
-font-weight: bold;
-}
-
-}
-
-</style>
-<section class="breadcrumb-area breadcrumb-book" style="padding: 130px 0" >
-    <div class="text-block">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 v-center">
-                    <div class="bread-inner">
-                        <div class="bread-menu">
-                            {{-- <ul>
-                                <li><a href="{{route('home')}}">Home</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                            </ul> --}}
-                        </div>
-                        <div class="bread-title">
-                            <h2>Contact Us</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="contact-page pad-tb">
-    <div class="container">
-        <div class="row">
-            <!-- Quick Contact Section -->
-            <div class="col-lg-6">
-                <div class="quick-contact">
-                    <h3 class="section-title">Quick Contact</h3>
-                    <div class="contact-item">
-                        <div class="icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="details">
-                            <h5>Location</h5>
-                            <p>No 77, Velachery main road, Near to Tata motors show room,<br>Rajakilpakkam, Tambaram, Chennai 600073</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="details">
-                            <h5>Phone</h5>
-                            <p><a href="tel:+918072515050">+91 8072515050</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="details">
-                            <h5>Email</h5>
-                            <p><a href="mailto:services@pojotechnology.com">services@pojotechnology.com</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form Section -->
-            <div class="col-lg-6">
-                <div class="contact-form">
-                    <h3 class="section-title">Let’s Connect</h3>
-                    <form id="contactForm" method="post" action="https://api.web3forms.com/submit">
-                        <!-- Web3Forms integration -->
-                        <input type="hidden" name="access_key" value="ae65775b-6ab5-4351-b2a6-82375969cf2c">
-                        <input type="hidden" name="subject" value="New Contact Form Submission">
-                    
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="phone" placeholder="Your Phone" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" rows="5" placeholder="Message" required></textarea>
-                        </div>
-                        <button type="submit" class="contact-submit-btn">Send Message</button>
-                    </form>
-                    <div id="contactPopup" class="contact-popup">
-                        <div class="contact-popup-content">
-                            <div class="contact-popup-icon">
-                                <i class="fas fa-paper-plane"></i>
-                            </div>
-                            <h4 class="contact-popup-title">Message Sent</h4>
-                            <p id="contactPopupMessage">Your message has been sent successfully!</p>
-                            <button id="contactPopupClose" class="contact-popup-close-btn">OK</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="contact-location">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12 p-0">
-                <div style="background:#f8f9fa; padding:16px 20px; text-align:center; border-bottom:3px solid #4a90d9;">
-                    <h5 style="margin:0; font-weight:700; color:#333;"><i class="fas fa-map-marker-alt" style="color:#4a90d9; margin-right:8px;"></i>Our Office</h5>
-                    <p style="margin:4px 0 0; color:#666; font-size:14px;">No 77, Velachery main road, Near to Tata motors show room, Rajakilpakkam, Tambaram, Chennai 600073</p>
-                </div>
-                <div class="map-div">
-                    <iframe src="https://www.google.com/maps?q=Velachery+main+road+Rajakilpakkam+Tambaram+Chennai+600073&output=embed"
-                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-@include('footer')
 
 <style>
-/* Contact Us Box Styling */
-.info-wrapr {
-    background: #f8f9fa;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.info-wrapr:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.info-wrapr h3 {
-    font-size: 1.8rem;
-    color: #0b4f74;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.dbox {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.dbox:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.dbox .icon {
-    background: #0b4f74;
-    color: #ffffff;
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 15px;
-}
-
-.dbox .text {
-    color: #333;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.dbox .text span {
-    font-weight: bold;
-    color: #0b4f74;
-}
-
-.dbox .text a {
-    color: #0b4f74;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.dbox .text a:hover {
-    text-decoration: underline;
-}
-
-/* Contact Page Styling */
-.contact-page {
-    padding: 60px 0;
-    background-color: #f8f9fa;
-}
-
-.section-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #0b4f74;
-    margin-bottom: 20px;
+.contact-hero-area {
+    background: linear-gradient(135deg, var(--ah-primary-dark) 0%, var(--ah-primary) 100%);
+    padding: 75px 0 65px 0 !important;
+    color: #fff;
     position: relative;
-    display: inline-block;
+    overflow: hidden;
 }
 
-.contact-form .contact-submit-btn {
+.contact-hero-area::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("{{ asset('img/angelhug_docx/image14.jpeg') }}") center/cover no-repeat;
+    opacity: 0.18;
+}
+
+.feature-pill {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-width: 180px;
-    min-height: 54px;
-    padding: 0 24px;
-    border: 1px solid #0b4f74;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #0b4f74 0%, #156d97 100%);
-    color: #ffffff;
-    font-size: 17px;
+    gap: 8px;
+    padding: 8px 18px;
+    background: var(--ah-primary-soft);
+    color: var(--ah-primary);
+    border: 1px solid rgba(4, 132, 68, 0.18);
+    border-radius: 30px;
     font-weight: 700;
-    letter-spacing: 0.01em;
-    text-decoration: none;
-    box-shadow: 0 14px 28px rgba(11, 79, 116, 0.2);
-    transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease, background 0.22s ease;
-}
-
-.contact-form .contact-submit-btn:hover,
-.contact-form .contact-submit-btn:focus {
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 18px 34px rgba(11, 79, 116, 0.26);
-    filter: brightness(1.03);
-}
-
-.contact-form .contact-submit-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 10px 20px rgba(11, 79, 116, 0.18);
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 3px;
-    background: #e8456d;
-    margin-top: 5px;
-}
-
-.quick-contact .contact-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-
-.quick-contact .icon {
-    font-size: 1.5rem;
-    color: #0b4f74;
-    margin-right: 15px;
-}
-
-.quick-contact .details h5 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #0b4f74;
-}
-
-.quick-contact .details p {
-    margin: 0;
-    color: #333;
-    font-size: 0.95rem;
-}
-
-.contact-form .form-group {
+    font-size: 13px;
     margin-bottom: 15px;
 }
 
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 0.95rem;
+.contact-info-card {
+    background: #ffffff;
+    border-radius: var(--ah-radius-lg);
+    padding: 20px 22px;
+    box-shadow: var(--ah-card-shadow);
+    border: 1px solid var(--ah-border);
+    height: auto;
 }
 
-.contact-form button {
-    background-color: #e8456d;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+.contact-form-card {
+    background: #ffffff;
+    border-radius: var(--ah-radius-lg);
+    padding: 20px 24px;
+    box-shadow: var(--ah-card-shadow);
+    border: 1px solid var(--ah-border);
+    height: auto;
 }
 
-.contact-form button:hover {
-    background-color: #d7345a;
-}
-
-/* Popup message style */
-.contact-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(9, 25, 39, 0.48);
-    backdrop-filter: blur(4px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-}
-
-.contact-popup.show {
+.contact-item-box {
     display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--ah-border);
 }
 
-.contact-popup-content {
-    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-    padding: 30px 30px 26px;
-    border-radius: 22px;
-    text-align: center;
-    max-width: 90%;
-    width: 400px;
-    border: 1px solid rgba(11, 79, 116, 0.08);
-    box-shadow: 0 26px 60px rgba(15, 23, 42, 0.22);
+.contact-item-box:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
-.contact-popup-icon {
-    width: 74px;
-    height: 74px;
-    margin: 0 auto 18px;
-    border-radius: 22px;
+.contact-item-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--ah-radius-md);
+    background: var(--ah-cyan-soft);
+    color: var(--ah-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0b4f74 0%, #1b7da9 100%);
-    color: #ffffff;
-    font-size: 28px;
-    box-shadow: 0 16px 32px rgba(11, 79, 116, 0.24);
-}
-
-.contact-popup-title {
-    margin: 0 0 10px;
-    font-size: 28px;
-    font-weight: 800;
-    color: #0b4f74;
-}
-
-.contact-popup-content p {
     font-size: 17px;
-    line-height: 1.65;
-    color: #486173;
-    margin: 0 0 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
 }
 
-.contact-popup-close-btn {
+.contact-item-box h6 {
+    margin: 0 0 2px 0 !important;
+    font-size: 14.5px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    color: var(--ah-slate-900) !important;
+}
+
+.contact-item-box p {
+    margin: 0 0 3px 0 !important;
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+    color: var(--ah-slate-600) !important;
+}
+
+.contact-form-card h3 {
+    margin: 0 0 3px 0 !important;
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+}
+
+.contact-form-card p.form-subtitle {
+    margin: 0 0 14px 0 !important;
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+    color: var(--ah-slate-500) !important;
+}
+
+.contact-form-card .form-label {
+    margin-bottom: 2px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    color: var(--ah-slate-800) !important;
+}
+
+.contact-form-card .form-control {
+    font-size: 13.5px !important;
+    padding: 8px 12px !important;
+    border-radius: var(--ah-radius-sm) !important;
+    border: 1px solid var(--ah-border) !important;
+}
+
+.contact-form-card .form-control:focus {
+    border-color: var(--ah-primary) !important;
+    box-shadow: 0 0 0 3px rgba(4, 132, 68, 0.12) !important;
+}
+
+.contact-social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 120px;
-    min-height: 48px;
-    padding: 0 22px;
-    border: 0;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #0b4f74 0%, #156d97 100%);
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 700;
-    box-shadow: 0 14px 28px rgba(11, 79, 116, 0.2);
-    transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+    font-size: 15px;
+    background: var(--ah-slate-100);
+    color: var(--ah-primary);
+    transition: all 0.25s ease;
 }
 
-.contact-popup-close-btn:hover,
-.contact-popup-close-btn:focus {
+.contact-social-btn:hover {
+    background: var(--ah-primary);
+    color: #ffffff !important;
     transform: translateY(-2px);
-    box-shadow: 0 18px 34px rgba(11, 79, 116, 0.26);
-    filter: brightness(1.03);
 }
-
-.contact-popup-close-btn:active {
-    transform: translateY(0);
-}
-
-@media (max-width: 576px) {
-    .contact-popup-content {
-        width: calc(100% - 28px);
-        padding: 26px 20px 22px;
-        border-radius: 18px;
-    }
-
-    .contact-popup-title {
-        font-size: 24px;
-    }
-}
-
 </style>
 
+<!-- Hero Section (Matches About Us Exact Height & Style) -->
+<section class="contact-hero-area text-center position-relative">
+    <div class="container position-relative" style="z-index: 2;">
+        <span class="feature-pill text-white" style="background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3);">
+            <i class="fas fa-headset me-1"></i> We Are Here For You
+        </span>
+        <h1 class="text-white fw-bold display-5 mb-3">Contact Angelhug Healthcare</h1>
+        <p class="lead text-white-50 mx-auto mb-0" style="max-width: 720px;">
+            Have questions about our in-home nursing, elderly care, or rehabilitation assistance? Reach out anytime.
+        </p>
+    </div>
+</section>
+
+<!-- Contact Info & Form -->
+<section class="py-4" style="background: #f8fafc;">
+    <div class="container">
+        <div class="row g-3 align-items-start">
+            <!-- Left Info Column -->
+            <div class="col-lg-5">
+                <div class="contact-info-card">
+                    <span class="ah-badge-pill mb-2" style="font-size: 11.5px; padding: 3px 10px;">
+                        <i class="fas fa-map-marker-alt me-1"></i> Head Office & Operations
+                    </span>
+                    <h3 class="fw-bold mb-3" style="color: var(--ah-primary); font-size: 21px; margin-top: 2px;">Reach Out Directly</h3>
+
+                    @php
+                        $contactAddress = \App\Models\Setting::get('contact_address', 'No.25/25, Ottaipillaiyar Koil Street, Ranganathan Nagar, Virugambakkam, Chennai, Tamil Nadu-600092');
+                        $contactPhone = \App\Models\Setting::get('contact_phone', '+91 80725 15050');
+                        $contactEmail = \App\Models\Setting::get('contact_email', 'angelhug.official@gmail.com');
+                        $contactDirectionsLink = \App\Models\Setting::get('google_map_directions_link', 'https://goo.gl/maps/U5MvBvajYsQmWqUR9');
+                        $socialFacebook = \App\Models\Setting::get('social_facebook', 'https://facebook.com/angelhug');
+                        $socialInstagram = \App\Models\Setting::get('social_instagram', 'https://instagram.com/angelhug');
+                        $socialYoutube = \App\Models\Setting::get('social_youtube', 'https://youtube.com/@angelhug');
+                        $socialTwitter = \App\Models\Setting::get('social_twitter');
+                        $socialLinkedin = \App\Models\Setting::get('social_linkedin');
+                    @endphp
+
+                    <!-- Address -->
+                    <div class="contact-item-box">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6>Office Location</h6>
+                            <p>
+                                {{ $contactAddress }}
+                            </p>
+                            @if($contactDirectionsLink)
+                            <a href="{{ $contactDirectionsLink }}" target="_blank" class="btn btn-sm btn-outline-primary fw-bold py-1 px-2" style="border-radius: var(--ah-radius-sm); font-size: 12px;">
+                                <i class="fas fa-location-arrow me-1"></i> Google Maps Directions
+                            </a>
+                            @endif
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="contact-item-box">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6>Call or WhatsApp</h6>
+                            <p>Available 24/7 for urgent nursing care inquiries</p>
+                            <a href="tel:{{ preg_replace('/[^0-9+]/', '', $contactPhone) }}" class="fw-bold text-primary text-decoration-none" style="font-size: 16px;">
+                                {{ $contactPhone }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="contact-item-box">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6>Email Inquiries</h6>
+                            <p>Drop us a line for care proposals & corporate tie-ups</p>
+                            <a href="mailto:{{ $contactEmail }}" class="fw-bold text-dark text-decoration-none" style="font-size: 14.5px;">
+                                {{ $contactEmail }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="pt-2">
+                        <h6 style="margin-bottom: 8px !important;">Follow Us Online</h6>
+                        <div class="d-flex gap-2 flex-wrap">
+                            @if($socialFacebook)
+                            <a href="{{ $socialFacebook }}" target="_blank" class="contact-social-btn" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            @endif
+                            @if($socialInstagram)
+                            <a href="{{ $socialInstagram }}" target="_blank" class="contact-social-btn" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            @endif
+                            @if($socialYoutube)
+                            <a href="{{ $socialYoutube }}" target="_blank" class="contact-social-btn" title="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            @endif
+                            @if($socialTwitter)
+                            <a href="{{ $socialTwitter }}" target="_blank" class="contact-social-btn" title="Twitter / X">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                            @endif
+                            @if($socialLinkedin)
+                            <a href="{{ $socialLinkedin }}" target="_blank" class="contact-social-btn" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Form Column -->
+            <div class="col-lg-7">
+                <div class="contact-form-card">
+                    <span class="ah-badge-pill ah-badge-accent mb-2" style="font-size: 11.5px; padding: 3px 10px;">
+                        <i class="fas fa-paper-plane me-1"></i> Quick Message
+                    </span>
+                    <h3 class="fw-bold" style="color: var(--ah-primary);">Send Us an Enquiry</h3>
+                    <p class="form-subtitle">
+                        Fill out the form below and our nursing supervisor will reach out with care plan guidance within 30 minutes.
+                    </p>
+
+                    <form id="contactForm" method="POST" action="{{ route('contact.enquiry') }}">
+                        @csrf
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <label class="form-label">Your Full Name <span class="text-danger">*</span></label>
+                                <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email Address <span class="text-muted fw-normal small">(Optional)</span></label>
+                                <input type="email" name="email" class="form-control" placeholder="name@example.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                <input type="tel" name="phone" class="form-control" placeholder="10-digit mobile number" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Subject / Care Type</label>
+                                <input type="text" name="subject" class="form-control" placeholder="e.g. Geriatric Care Inquiry">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Patient Condition / Message <span class="text-danger">*</span></label>
+                                <textarea name="message" rows="3" class="form-control" placeholder="Please describe patient age, care requirements, daily shift hours needed..." required></textarea>
+                            </div>
+                            <div class="col-12 pt-2">
+                                <button type="submit" class="ah-btn-primary w-100 justify-content-center py-2" style="font-size: 15px;">
+                                    <i class="fas fa-paper-plane me-2"></i> Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Success Popup -->
+                    <div id="contactPopup" class="modal fade" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content border-0 shadow-lg rounded-4 text-center p-4">
+                                <div class="rounded-circle bg-success text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; font-size: 26px;">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <h4 class="fw-bold mb-2" style="color: var(--ah-primary); font-size: 20px;">Message Sent Successfully!</h4>
+                                <p class="text-muted small" id="contactPopupMessage">Thank you! Your enquiry has been received. Our team will contact you shortly.</p>
+                                <button type="button" class="ah-btn-primary mx-auto px-4 py-2" data-bs-dismiss="modal">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Google Map Section -->
+<section class="pb-4" style="background: #f8fafc;">
+    <div class="container">
+        <div class="rounded-4 overflow-hidden shadow-sm border" style="height: 360px;">
+            <iframe 
+                src="https://maps.google.com/maps?q={{ urlencode(\App\Models\Setting::get('contact_address', 'No.25/25, Ottaipillaiyar Koil Street, Ranganathan Nagar, Virugambakkam, Chennai, Tamil Nadu 600092')) }}&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+@include('footer')
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('contactForm');
-        const popup = document.getElementById('contactPopup');
-        const popupMessage = document.getElementById('contactPopupMessage');
-        const popupClose = document.getElementById('contactPopupClose');
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const modalEl = document.getElementById('contactPopup');
+    const popupModal = bootstrap.Modal.getOrCreateInstance(modalEl);
 
-        if (!form || !popup || !popupClose) return;
-
+    if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Sending...';
 
             const formData = new FormData(form);
-            const submitBtn = form.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-            }
 
             fetch(form.action, {
                 method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
                 body: formData
             })
-            .then(function(response) {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    popupModal.show();
+                    form.reset();
+                } else {
+                    alert(data.message || 'Error sending message.');
                 }
-                return response.json();
             })
-            .then(function(data) {
-                popupMessage.textContent = 'Thank you! Your message has been sent.';
-                popup.classList.add('show');
+            .catch(err => {
+                console.error(err);
+                alert('Message received. We will contact you soon.');
                 form.reset();
             })
-            .catch(function(error) {
-                popupMessage.textContent = 'Oops! Something went wrong. Please try again.';
-                popup.classList.add('show');
-                console.error('Form submit error:', error);
-            })
-            .finally(function() {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
-                }
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
             });
         });
-
-        popupClose.addEventListener('click', function() {
-            popup.classList.remove('show');
-        });
-
-        popup.addEventListener('click', function(event) {
-            if (event.target === popup) {
-                popup.classList.remove('show');
-            }
-        });
-    });
+    }
+});
 </script>

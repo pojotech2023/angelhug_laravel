@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Cart</title>
-    <link href="{{ asset('img/logo.jpeg') }}" rel="icon">
+    <link rel="icon" type="image/png" href="{{ asset('Angelhug Logo/FullLogo_Transparent_NoBuffer.png') }}">
+    <link rel="shortcut icon" href="{{ asset('Angelhug Logo/FullLogo_Transparent_NoBuffer.png') }}">
     <style>
     body {
         background: #ffeef7;
