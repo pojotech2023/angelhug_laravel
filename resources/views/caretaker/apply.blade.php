@@ -364,7 +364,7 @@
         @endif
 
         @if(isset($errors) && $errors->any())
-            <div class="alert alert-danger rounded-4 p-3 mb-4 shadow-sm border-0">
+            <div class="alert alert-danger rounded-4 p-3 mb-4 shadow-sm border-0" id="errorAlert">
                 <div class="d-flex align-items-center gap-2 mb-2">
                     <i class="fas fa-exclamation-triangle fs-5 text-danger"></i>
                     <strong class="text-danger">Please fix the following validation errors:</strong>
@@ -401,11 +401,11 @@
                                 </div>
                                 <div class="flex-grow-1 w-100">
                                     <label class="form-label mb-1">
-                                        <span class="field-badge">1</span> Applicant Photo <span class="text-danger">*</span>
+                                        <span class="field-badge">1</span> Applicant Photo <span class="text-muted fw-normal">(Optional / Recommended)</span>
                                     </label>
-                                    <input type="file" class="form-control" name="photo" id="photoInput" accept="image/*" required onchange="previewPhoto(event)">
+                                    <input type="file" class="form-control" name="photo" id="photoInput" accept="image/*" onchange="previewPhoto(event)">
                                     <small class="text-muted d-block mt-1" style="font-size: 12px;">
-                                        <i class="fas fa-camera text-success me-1"></i> Upload a recent passport-size photograph (JPG or PNG, Max 2MB).
+                                        <i class="fas fa-camera text-success me-1"></i> Upload a recent photograph (JPG, PNG or WEBP, Max 10MB).
                                     </small>
                                 </div>
                             </div>
@@ -451,23 +451,23 @@
                             <label class="form-label">
                                 <span class="field-badge">5</span> Date of Birth <span class="text-danger">*</span>
                             </label>
-                            <input type="date" class="form-control" name="dob" id="dobInput" value="{{ old('dob') }}" max="{{ date('Y-m-d', strtotime('-18 years')) }}" required onchange="calculateAge()">
+                            <input type="date" class="form-control" name="dob" id="dobInput" value="{{ old('dob') }}" max="{{ date('Y-m-d', strtotime('-18 years')) }}" required onchange="calculateAge()" oninput="calculateAge()">
                         </div>
 
                         <!-- Field 6: Age -->
                         <div class="col-md-4">
                             <label class="form-label">
-                                <span class="field-badge">6</span> Age <span class="text-danger">*</span>
+                                <span class="field-badge">6</span> Age <span class="text-muted fw-normal">(Auto-calculated)</span>
                             </label>
-                            <input type="number" class="form-control fw-bold bg-light" name="age" id="ageInput" value="{{ old('age') }}" min="18" max="85" placeholder="Auto-calculated" required>
+                            <input type="number" class="form-control fw-bold bg-light" name="age" id="ageInput" value="{{ old('age') }}" min="18" max="85" placeholder="Auto-calculated">
                         </div>
 
                         <!-- Field 7: Govt ID Proof Doc -->
                         <div class="col-12 mt-1">
                             <label class="form-label">
-                                <span class="field-badge">7</span> Upload Govt ID Proof Doc <span class="text-danger">*</span>
+                                <span class="field-badge">7</span> Upload Govt ID Proof Doc <span class="text-muted fw-normal">(Optional / Can present at verification)</span>
                             </label>
-                            <input type="file" class="form-control" name="govt_id_proof" accept=".pdf,image/*" required>
+                            <input type="file" class="form-control" name="govt_id_proof" accept=".pdf,image/*">
                             <small class="text-muted d-block mt-1" style="font-size: 12px;">
                                 <i class="fas fa-id-card text-success me-1"></i> Aadhar Card, PAN Card, Passport, or Voter ID (PDF / JPG / PNG, Max 10MB)
                             </small>
@@ -488,15 +488,15 @@
                             <label class="form-label">
                                 <span class="field-badge">8</span> Highest Education Details <span class="text-danger">*</span>
                             </label>
-                            <input type="text" class="form-control" name="highest_education" value="{{ old('highest_education') }}" placeholder="e.g. B.Sc Nursing / GNM Diploma / BPT Physiotherapy" required>
+                            <input type="text" class="form-control" name="highest_education" value="{{ old('highest_education') }}" placeholder="e.g. B.Sc Nursing / GNM Diploma / 10th / 12th / Caregiver Training" required>
                         </div>
 
                         <!-- Field 9: Specialization/Role -->
                         <div class="col-md-6">
                             <label class="form-label">
-                                <span class="field-badge">9</span> Specialization / Role <span class="text-danger">*</span>
+                                <span class="field-badge">9</span> Specialization / Role <span class="text-muted fw-normal">(Optional)</span>
                             </label>
-                            <input type="text" class="form-control" name="specialization_role" value="{{ old('specialization_role') }}" placeholder="e.g. Geriatric Care, ICU Nursing, Post-Surgical, Palliative" required>
+                            <input type="text" class="form-control" name="specialization_role" value="{{ old('specialization_role') }}" placeholder="e.g. Geriatric Care, ICU Nursing, Post-Surgical, General Assistance">
                         </div>
 
                         <!-- Field 10: Place of Registration -->
@@ -518,22 +518,22 @@
                         <!-- Field 12: Upload Education Documents -->
                         <div class="col-md-6 mt-1">
                             <label class="form-label">
-                                <span class="field-badge">12</span> Upload Education Certificate <span class="text-danger">*</span>
+                                <span class="field-badge">12</span> Upload Education Certificate <span class="text-muted fw-normal">(Optional)</span>
                             </label>
-                            <input type="file" class="form-control" name="education_document" accept=".pdf,image/*" required>
+                            <input type="file" class="form-control" name="education_document" accept=".pdf,image/*">
                             <small class="text-muted d-block mt-1" style="font-size: 12px;">
-                                <i class="fas fa-file-medical text-success me-1"></i> Degree / Diploma certificate (PDF, JPG, PNG)
+                                <i class="fas fa-file-medical text-success me-1"></i> Degree / Diploma / School certificate if available (PDF, JPG, PNG, Max 10MB)
                             </small>
                         </div>
 
                         <!-- Field 13: Upload Resume / CV -->
                         <div class="col-md-6 mt-1">
                             <label class="form-label">
-                                <span class="field-badge">13</span> Upload Resume / CV <span class="text-danger">*</span>
+                                <span class="field-badge">13</span> Upload Resume / CV <span class="text-muted fw-normal">(Optional)</span>
                             </label>
-                            <input type="file" class="form-control" name="resume_document" accept=".pdf,.doc,.docx,image/*" required>
+                            <input type="file" class="form-control" name="resume_document" accept=".pdf,.doc,.docx,image/*">
                             <small class="text-muted d-block mt-1" style="font-size: 12px;">
-                                <i class="fas fa-file-pdf text-success me-1"></i> Recent resume / clinical profile (PDF, DOC, Max 10MB)
+                                <i class="fas fa-file-pdf text-success me-1"></i> Recent resume / clinical profile if available (PDF, DOC, Max 10MB)
                             </small>
                         </div>
                     </div>
@@ -581,9 +581,9 @@
                         <!-- Field 16: Overall Experience -->
                         <div class="col-md-6">
                             <label class="form-label">
-                                <span class="field-badge">16</span> Overall Experience Summary <span class="text-danger">*</span>
+                                <span class="field-badge">16</span> Overall Experience Summary <span class="text-muted fw-normal">(Optional)</span>
                             </label>
-                            <input type="text" class="form-control" name="overall_experience" value="{{ old('overall_experience') }}" placeholder="e.g. 4+ Years Hospital & Home Care" required>
+                            <input type="text" class="form-control" name="overall_experience" value="{{ old('overall_experience') }}" placeholder="e.g. 4+ Years Hospital & Home Care">
                         </div>
                     </div>
                 </div>
@@ -621,9 +621,9 @@
                         <!-- Field 19: Personal Email -->
                         <div class="col-md-4">
                             <label class="form-label">
-                                <span class="field-badge">19</span> Personal Mail ID <span class="text-danger">*</span>
+                                <span class="field-badge">19</span> Personal Mail ID <span class="text-muted fw-normal">(Optional)</span>
                             </label>
-                            <input type="email" class="form-control" name="personal_email" value="{{ old('personal_email') }}" placeholder="name@example.com" required>
+                            <input type="email" class="form-control" name="personal_email" value="{{ old('personal_email') }}" placeholder="name@example.com (leave blank if no email)">
                         </div>
 
                         <!-- Field 20: House / Building Number -->
@@ -703,8 +703,8 @@
         const input = event.target;
         if (input.files && input.files[0]) {
             const file = input.files[0];
-            if (file.size > 2 * 1024 * 1024) {
-                alert('File size exceeds 2MB limit. Please select a photo under 2MB.');
+            if (file.size > 10 * 1024 * 1024) {
+                alert('File size exceeds 10MB limit. Please select an image under 10MB.');
                 input.value = '';
                 document.getElementById('photoPreview').style.display = 'none';
                 document.getElementById('photoPlaceholder').style.display = 'block';
@@ -725,9 +725,11 @@
     function calculateAge() {
         const dobInput = document.getElementById('dobInput');
         const ageInput = document.getElementById('ageInput');
-        if (!dobInput.value) return;
+        if (!dobInput || !dobInput.value) return;
 
         const dob = new Date(dobInput.value);
+        if (isNaN(dob.getTime())) return;
+
         const today = new Date();
         let age = today.getFullYear() - dob.getFullYear();
         const m = today.getMonth() - dob.getMonth();
@@ -747,7 +749,28 @@
         }
     }
 
+    document.addEventListener('DOMContentLoaded', function() {
+        // Auto calculate age if DOB already filled (e.g. from old input)
+        calculateAge();
+
+        const dobInput = document.getElementById('dobInput');
+        if (dobInput) {
+            dobInput.addEventListener('input', calculateAge);
+            dobInput.addEventListener('change', calculateAge);
+        }
+
+        // Scroll to error alert if validation errors occurred
+        const errAlert = document.getElementById('errorAlert');
+        if (errAlert) {
+            errAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    });
+
     document.getElementById('caretakerForm').addEventListener('submit', function(event) {
+        if (!this.checkValidity()) {
+            return; // Let browser display validation tooltip without locking button
+        }
+
         const submitButton = this.querySelector('button[type="submit"]');
         if (this.dataset.submitting === 'true') {
             event.preventDefault();
@@ -756,7 +779,7 @@
 
         this.dataset.submitting = 'true';
         submitButton.disabled = true;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Submitting...';
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Submitting Application...';
     });
     </script>
 </body>
