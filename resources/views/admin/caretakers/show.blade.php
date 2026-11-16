@@ -26,9 +26,16 @@
         <div class="p-4 text-white position-relative" style="background: linear-gradient(135deg, #048444 0%, #024724 100%);">
             <div class="d-flex align-items-center flex-wrap gap-4">
                 <div class="position-relative">
-                    <img src="{{ $caretaker->photo_url }}" alt="{{ $caretaker->name }}" 
-                         class="rounded-circle border border-3 border-white shadow" 
-                         style="width: 100px; height: 100px; object-fit: cover;">
+                    @if($caretaker->photo_url)
+                        <img src="{{ $caretaker->photo_url }}" alt="{{ $caretaker->name }}" 
+                             class="rounded-circle border border-3 border-white shadow" 
+                             style="width: 100px; height: 100px; object-fit: cover;">
+                    @else
+                        <div class="rounded-circle border border-3 border-white shadow d-flex align-items-center justify-content-center text-white fw-bold user-select-none" 
+                             style="width: 100px; height: 100px; background: rgba(255, 255, 255, 0.22); font-size: 34px; backdrop-filter: blur(6px); letter-spacing: 1px;">
+                            {{ $caretaker->initials }}
+                        </div>
+                    @endif
                 </div>
                 <div class="flex-grow-1">
                     <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
@@ -68,10 +75,33 @@
                             <tr>
                                 <th class="bg-light text-muted fw-bold text-uppercase" style="width: 20%; font-size: 11px;">1. Applicant Photo</th>
                                 <td style="width: 30%;">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img src="{{ $caretaker->photo_url }}" alt="{{ $caretaker->name }}" class="rounded-circle border" style="width: 42px; height: 42px; object-fit: cover;">
-                                        <span class="fw-semibold text-dark">{{ $caretaker->photo ? 'Uploaded & Verified' : 'Default Avatar' }}</span>
-                                    </div>
+                                    @if($caretaker->photo_url)
+                                        <div class="d-flex align-items-center gap-2">
+                                            <a href="{{ $caretaker->photo_url }}" target="_blank">
+                                                <img src="{{ $caretaker->photo_url }}" alt="{{ $caretaker->name }}" class="rounded-circle border shadow-sm" style="width: 44px; height: 44px; object-fit: cover;">
+                                            </a>
+                                            <div>
+                                                <span class="badge bg-success-subtle text-success border border-success fw-bold px-2 py-1" style="font-size: 11px;">
+                                                    <i class="fas fa-check-circle me-1"></i> Uploaded Photo
+                                                </span>
+                                                <a href="{{ $caretaker->photo_url }}" target="_blank" class="d-block small text-primary text-decoration-none mt-0.5" style="font-size: 11px;">
+                                                    <i class="fas fa-external-link-alt me-1"></i> View Full Image
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="rounded-circle bg-light border d-inline-flex align-items-center justify-content-center text-muted" style="width: 42px; height: 42px;">
+                                                <i class="fas fa-user-circle text-secondary fs-4"></i>
+                                            </div>
+                                            <div>
+                                                <span class="badge bg-secondary-subtle text-secondary border fw-bold px-2 py-1" style="font-size: 11px;">
+                                                    <i class="fas fa-camera text-muted me-1"></i> No Photo Uploaded
+                                                </span>
+                                                <small class="text-muted d-block" style="font-size: 10.5px;">Can provide passport photo at verification</small>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </td>
                                 <th class="bg-light text-muted fw-bold text-uppercase" style="width: 20%; font-size: 11px;">2. Full Legal Name</th>
                                 <td style="width: 30%;" class="fw-bold text-dark fs-6">{{ $caretaker->name }}</td>

@@ -23,17 +23,32 @@ class Caretaker extends Model
         return $prefix . '-' . $random;
     }
 
-    public function getPhotoUrlAttribute(): string
+    public function getInitialsAttribute(): string
     {
-        if ($this->photo && file_exists(public_path('storage/' . $this->photo))) {
+        $words = preg_split('/[\s\._-]+/', trim((string)$this->name));
+        $initials = '';
+        foreach ($words as $w) {
+            if (!empty($w)) {
+                $initials .= strtoupper(substr($w, 0, 1));
+            }
+            if (strlen($initials) >= 2) {
+                break;
+            }
+        }
+        return $initials ?: 'CT';
+    }
+
+    public function getPhotoUrlAttribute(): ?string
+    {
+        if (!empty($this->photo)) {
             return asset('storage/' . $this->photo);
         }
-        return asset('img/angelhug_docx/image1.jpeg');
+        return null;
     }
 
     public function getEducationDocUrlAttribute(): ?string
     {
-        if ($this->education_document && file_exists(public_path('storage/' . $this->education_document))) {
+        if (!empty($this->education_document)) {
             return asset('storage/' . $this->education_document);
         }
         return null;
@@ -41,7 +56,7 @@ class Caretaker extends Model
 
     public function getGovtIdDocUrlAttribute(): ?string
     {
-        if ($this->govt_id_proof && file_exists(public_path('storage/' . $this->govt_id_proof))) {
+        if (!empty($this->govt_id_proof)) {
             return asset('storage/' . $this->govt_id_proof);
         }
         return null;
@@ -49,7 +64,7 @@ class Caretaker extends Model
 
     public function getResumeDocUrlAttribute(): ?string
     {
-        if ($this->resume_document && file_exists(public_path('storage/' . $this->resume_document))) {
+        if (!empty($this->resume_document)) {
             return asset('storage/' . $this->resume_document);
         }
         return null;

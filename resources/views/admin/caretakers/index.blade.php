@@ -134,8 +134,15 @@
                         <tr>
                             <td class="ps-4">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ $ct->photo_url }}" alt="{{ $ct->name }}" 
-                                         class="rounded-circle me-3 border shadow-sm" style="width: 44px; height: 44px; object-fit: cover;">
+                                    @if($ct->photo_url)
+                                        <img src="{{ $ct->photo_url }}" alt="{{ $ct->name }}" 
+                                             class="rounded-circle me-3 border shadow-sm" style="width: 44px; height: 44px; object-fit: cover;">
+                                    @else
+                                        <div class="rounded-circle me-3 d-flex align-items-center justify-content-center fw-bold text-white shadow-sm flex-shrink-0" 
+                                             style="width: 44px; height: 44px; background: linear-gradient(135deg, #048444, #024724); font-size: 14px;">
+                                            {{ $ct->initials }}
+                                        </div>
+                                    @endif
                                     <div>
                                         <strong class="text-dark d-block" style="font-size: 14px;">{{ $ct->name }}</strong>
                                         <small class="text-muted d-block" style="font-size: 11px;">

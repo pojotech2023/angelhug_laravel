@@ -387,3 +387,13 @@ Route::middleware(['authlogin'])->group(function () {
     Route::resource('admin/documents', DocumentController::class);
     Route::resource('admin/leaders', LeaderController::class);
 });
+
+// Storage File Stream Fallback (Guarantees uploaded images/documents display on shared hosting without symlinks)
+Route::get('/storage/{path}', function ($path) {
+    $filePath = storage_path('app/public/' . $path);
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+    return response()->file($filePath);
+})->where('path', '.*');
+
